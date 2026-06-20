@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Cpu, Layout, Server, Database, Settings, ShieldCheck } from "lucide-react";
 
 interface SkillItem {
@@ -19,6 +19,15 @@ interface SkillCategory {
 
 export default function Skills() {
   const [activeCategory, setActiveCategory] = useState<number>(0);
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    setAnimate(false);
+    const timer = setTimeout(() => {
+      setAnimate(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, [activeCategory]);
 
   const categories: SkillCategory[] = [
     {
@@ -27,7 +36,7 @@ export default function Skills() {
       icon: <Layout className="h-5 w-5 text-purple-500" />,
       items: [
         { name: "Vue.Js", level: "Dasar", percentage: 50, colorClass: "shadow-[#4fc08d]/20 border-[#4fc08d]/40" },
-        { name: "Next.Js", level: "Dasar", percentage: 50, colorClass: "shadow-[#ffffff]/10 border-white/40" },
+        { name: "Next.Js", level: "Dasar", percentage: 50, colorClass: "shadow-[#f7df1e]/20 border-[#f7df1e]/40" },
         { name: "TypeScript", level: "Dasar", percentage: 50, colorClass: "shadow-[#3178c6]/20 border-[#3178c6]/40" },
         { name: "Tailwind CSS", level: "Ahli", percentage: 95, colorClass: "shadow-[#38bdf8]/20 border-[#38bdf8]/40" },
         { name: "HTML & CSS", level: "Ahli", percentage: 95, colorClass: "shadow-[#e34c26]/20 border-[#e34c26]/40" },
@@ -51,7 +60,7 @@ export default function Skills() {
       items: [
         { name: "MySQL", level: "Ahli", percentage: 95, colorClass: "shadow-[#4479a1]/20 border-[#4479a1]/40" },
         { name: "Git & GitHub", level: "Lanjutan", percentage: 80, colorClass: "shadow-[#f05032]/20 border-[#f05032]/40" },
-        { name: "Vercel / Netlify", level: "Lanjutan", percentage: 80, colorClass: "shadow-[#000000]/10 border-black/40" },
+        { name: "Vercel / Netlify", level: "Lanjutan", percentage: 80, colorClass: "shadow-[#f7df1e]/20 border-[#f7df1e]/40" },
       ],
     },
     {
@@ -141,10 +150,10 @@ export default function Skills() {
                   {/* Progress bar container */}
                   <div className="h-1.5 w-full bg-foreground/5 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-gradient-to-r from-primary to-secondary rounded-full transition-all duration-1000 ease-out origin-left scale-x-0 group-hover:scale-x-100"
+                      className="h-full bg-gradient-to-r from-primary to-secondary rounded-full transition-all duration-1000 ease-out origin-left"
                       style={{
                         width: `${skill.percentage}%`,
-                        transform: "scaleX(1)", // let browser handle transition automatically
+                        transform: animate ? "scaleX(1)" : "scaleX(0)",
                       }}
                     />
                   </div>

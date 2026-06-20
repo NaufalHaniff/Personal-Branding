@@ -10,6 +10,7 @@ interface Project {
   tags: string[];
   demoUrl: string;
   githubUrl: string;
+  image?: string;
   isFeatured?: boolean;
 }
 
@@ -26,6 +27,7 @@ export default function Projects() {
       tags: ["Laravel 11", "Livewire", "MySQL", "Tailwind CSS", "PHP"],
       demoUrl: "https://ssbo.co.id",
       githubUrl: "https://github.com",
+      image: "/projects/SSBO Marketplace B2B.png",
       isFeatured: true,
     },
   ];
@@ -100,6 +102,17 @@ export default function Projects() {
                 </div>
                 <div className="w-9" />
               </div>
+
+              {/* Project Image Preview */}
+              {project.image && (
+                <div className="relative aspect-video w-full overflow-hidden border-b border-border bg-foreground/[0.02]">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500 ease-out"
+                  />
+                </div>
+              )}
 
               {/* Card Body */}
               <div className="p-6 flex flex-col flex-grow z-10 text-left">

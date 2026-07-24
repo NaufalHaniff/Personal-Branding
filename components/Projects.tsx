@@ -24,7 +24,7 @@ export default function Projects() {
       title: "SSBO Marketplace B2B",
       description: "Platform e-commerce grosir B2B terintegrasi dengan negosiasi harga real-time, sistem invoice otomatis, restriksi seller, dan multi-bahasa dinamis.",
       category: "Full-Stack",
-      tags: ["Laravel 12", "Livewire", "MySQL", "Tailwind CSS", "PHP"],
+      tags: ["Laravel 12", "Livewire", "MySQL", "Tailwind CSS", "Laravel", "PHP"],
       demoUrl: "https://ssbo.co.id",
       githubUrl: "https://github.com",
       image: "/projects/SSBO Marketplace B2B.png",

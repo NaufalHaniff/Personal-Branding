@@ -33,6 +33,16 @@ export default function Projects() {
     }
   };
 
+  const getGridClasses = () => {
+    if (filteredProjects.length === 1) {
+      return "max-w-md mx-auto";
+    }
+    if (filteredProjects.length === 2) {
+      return "max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8";
+    }
+    return "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8";
+  };
+
   return (
     <section id="projects" className="py-24 px-4 sm:px-6 relative overflow-hidden bg-card border-b-2 border-black">
       <div className="max-w-6xl mx-auto z-10 relative">
@@ -65,8 +75,8 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+        {/* Projects Grid with dynamic centering */}
+        <div className={`${getGridClasses()} text-left transition-all duration-300`}>
           {filteredProjects.map((project) => (
             <div
               key={project.title}

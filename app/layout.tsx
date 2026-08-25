@@ -28,6 +28,14 @@ export const metadata: Metadata = {
     "Neubrutalism Portfolio",
   ],
   authors: [{ name: "Naufal Hanif Fauzi" }],
+  icons: {
+    icon: [
+      { url: "/projects/favicon.png" },
+      { url: "/favicon.png" },
+    ],
+    shortcut: "/projects/favicon.png",
+    apple: "/projects/favicon.png",
+  },
 };
 
 export default function RootLayout({

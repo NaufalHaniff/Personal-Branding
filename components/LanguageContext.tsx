@@ -178,12 +178,12 @@ export const dictionaries: Record<Language, Translations> = {
     about: {
       tag: "01 / TENTANG DIRI SAYA",
       title: "Perjalanan Profesional & Latar Belakang",
-      headline: "Menghubungkan logika backend yang tangguh dengan visual interaktif yang nyaman digunakan.",
+      headline: "Merancang arsitektur backend yang tangguh dan menghadirkan antarmuka digital yang presisi serta skalabel.",
       p1Name: "Naufal Hanif Fauzi",
       p1Edu: "Universitas Pamulang (2021 – 2025)",
       p1Body:
-        "Saya adalah Naufal Hanif Fauzi, lulusan S1 Teknik Informatika dari Universitas Pamulang (2021 – 2025). Berbekal 4 tahun pengalaman membangun aplikasi web dan hampir 1 tahun pengalaman profesional, saya berspesialisasi dalam ekosistem Laravel, MySQL, dan Tailwind CSS untuk platform B2B dan B2C.",
-      p2: "Saya secara aktif mengintegrasikan modern AI tooling seperti GitHub Copilot, Claude Code, dan Antigravity untuk mempercepat proses riset, penulisan kode berkualitas, dan efisiensi arsitektur sistem.",
+        "Sebagai Full-Stack Web Developer dengan rekam jejak lebih dari 4 tahun dalam pengembangan perangkat lunak web dan pengalaman profesional di industri, saya berfokus pada perancangan sistem web end-to-end. Spesialisasi saya mencakup ekosistem Laravel, perancangan basis data relasional MySQL performa tinggi, serta pengembangan antarmuka modern yang responsif dan berpusat pada pengguna untuk platform berskala B2B dan B2C.",
+      p2: "Saya menerapkan metodologi rekayasa modern dengan mengintegrasikan AI Developer Tooling terkini seperti GitHub Copilot, Claude Code, dan Antigravity. Pendekatan ini menjadi akselerator dalam mempercepat siklus riset teknis, memastikan kualitas dan keamanan kode, serta mengoptimalkan arsitektur sistem secara menyeluruh demi menghasilkan solusi digital yang andal dan teruji.",
       stat1Val: "4+ Tahun",
       stat1Label: "Web Dev Background",
       stat2Val: "3 Proyek",
@@ -386,12 +386,12 @@ export const dictionaries: Record<Language, Translations> = {
     about: {
       tag: "01 / ABOUT ME",
       title: "Professional Journey & Background",
-      headline: "Connecting robust backend logic with intuitive, interactive visual experiences.",
+      headline: "Architecting resilient backend systems and delivering precise, scalable digital interfaces.",
       p1Name: "Naufal Hanif Fauzi",
       p1Edu: "Universitas Pamulang (2021 – 2025)",
       p1Body:
-        "I am Naufal Hanif Fauzi, a Bachelor of Informatics Engineering graduate from Universitas Pamulang (2021 – 2025). With 4 years of web development background and nearly 1 year of professional experience, I specialize in the Laravel, MySQL, and Tailwind CSS ecosystem for B2B and B2C platforms.",
-      p2: "I actively integrate modern AI tooling such as GitHub Copilot, Claude Code, and Antigravity to maximize development velocity, code quality, and system architecture efficiency.",
+        "As a Full-Stack Web Developer with over 4 years of software development background and hands-on industry experience, I specialize in engineering end-to-end web architectures. My core expertise centers on the Laravel ecosystem, high-performance MySQL relational database modeling, and building responsive, user-centric interfaces tailored for enterprise B2B and consumer B2C platforms.",
+      p2: "I actively leverage modern engineering workflows by integrating advanced AI Developer Tooling including GitHub Copilot, Claude Code, and Antigravity. This integration serves as a powerful force multiplier—accelerating technical research cycles, enforcing rigorous code quality and security standards, and optimizing overall system architecture to deliver robust, production-ready solutions.",
       stat1Val: "4+ Years",
       stat1Label: "Web Dev Background",
       stat2Val: "3 Projects",

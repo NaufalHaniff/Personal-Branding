@@ -10,7 +10,6 @@ export default function About() {
   const stats = [
     { value: t.about.stat1Val, label: t.about.stat1Label, color: "bg-neo-yellow" },
     { value: t.about.stat2Val, label: t.about.stat2Label, color: "bg-neo-green" },
-    { value: t.about.stat3Val, label: t.about.stat3Label, color: "bg-neo-red" },
   ];
 
   return (
@@ -46,8 +45,8 @@ export default function About() {
               </p>
             </div>
 
-            {/* 3 Stats Boxes */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {/* 2 Stats Boxes */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {stats.map((stat, idx) => (
                 <div
                   key={idx}

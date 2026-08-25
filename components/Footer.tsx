@@ -72,9 +72,6 @@ export default function Footer() {
               &copy; {currentYear} Naufal Hanif. {t.footer.allRightsReserved}
             </p>
           </div>
-          <p className="text-[11px] text-foreground/60 font-mono font-bold mt-1">
-            {t.footer.subtext}
-          </p>
         </div>
 
         {/* Middle/Right: Back to Top and Socials */}

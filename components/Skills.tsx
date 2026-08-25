@@ -33,7 +33,7 @@ export default function Skills() {
       title: t.skills.backendTitle,
       icon: <Database className="h-4 w-4 stroke-[2.5]" />,
       color: "bg-neo-yellow",
-      skills: ["Laravel 12", "PHP (OOP & Native)", "MySQL", "RESTful API Architecture", "Livewire"],
+      skills: ["Laravel 13", "PHP (OOP & Native)", "MySQL", "RESTful API Architecture", "Livewire"],
     },
     {
       title: t.skills.frontendTitle,
@@ -45,7 +45,7 @@ export default function Skills() {
       title: t.skills.aiTitle,
       icon: <Bot className="h-4 w-4 stroke-[2.5]" />,
       color: "bg-neo-green",
-      skills: ["GitHub Copilot", "Claude Code", "Antigravity IDE", "Prompt Engineering & Pair Coding"],
+      skills: ["GitHub Copilot", "Claude Code", "Antigravity IDE"],
     },
     {
       title: t.skills.toolsTitle,

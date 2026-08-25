@@ -1,9 +1,11 @@
 "use client";
 
 import React from "react";
+import { useLanguage } from "./LanguageContext";
 import { Mail, ArrowUp } from "lucide-react";
 
 export default function Footer() {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
@@ -67,11 +69,11 @@ export default function Footer() {
               NaufalHanif
             </span>
             <p className="text-xs sm:text-sm font-black text-foreground">
-              &copy; {currentYear} Naufal Hanif. All Rights Reserved.
+              &copy; {currentYear} Naufal Hanif. {t.footer.allRightsReserved}
             </p>
           </div>
           <p className="text-[11px] text-foreground/60 font-mono font-bold mt-1">
-            Built with Next.js &amp; Tailwind CSS • Crafted with Neubrutalism UI
+            {t.footer.subtext}
           </p>
         </div>
 
@@ -98,9 +100,9 @@ export default function Footer() {
           {/* Back to top button */}
           <button
             onClick={handleScrollToTop}
-            aria-label="Kembali ke atas"
+            aria-label={t.footer.backToTop}
             className="neo-btn-sm bg-neo-yellow text-black p-2.5 rounded-lg flex items-center justify-center"
-            title="Kembali ke atas"
+            title={t.footer.backToTop}
           >
             <ArrowUp className="h-4 w-4 stroke-[3]" />
           </button>
@@ -109,4 +111,5 @@ export default function Footer() {
     </footer>
   );
 }
+
 

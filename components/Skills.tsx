@@ -1,51 +1,54 @@
 "use client";
 
 import React from "react";
-import { Cpu, Code2, Database, Wrench, Bot, Sparkles } from "lucide-react";
+import { useLanguage } from "./LanguageContext";
+import { Cpu, Code2, Database, Wrench, Bot } from "lucide-react";
 
 export default function Skills() {
+  const { t } = useLanguage();
+
   const row1 = [
-    { name: "Laravel", category: "Framework", color: "bg-neo-red", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" },
-    { name: "PHP", category: "Language", color: "bg-neo-blue", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" },
-    { name: "MySQL", category: "Database", color: "bg-neo-yellow", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
-    { name: "Tailwind CSS", category: "Styling", color: "bg-neo-green", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
-    { name: "JavaScript", category: "Language", color: "bg-neo-yellow", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
-    { name: "Next.js", category: "Framework", color: "bg-white", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
-    { name: "Vue.js", category: "Framework", color: "bg-neo-green", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" },
+    { name: "Laravel", category: t.skills.categoryNames.Framework, color: "bg-neo-red", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" },
+    { name: "PHP", category: t.skills.categoryNames.Language, color: "bg-neo-blue", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" },
+    { name: "MySQL", category: t.skills.categoryNames.Database, color: "bg-neo-yellow", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+    { name: "Tailwind CSS", category: t.skills.categoryNames.Styling, color: "bg-neo-green", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+    { name: "JavaScript", category: t.skills.categoryNames.Language, color: "bg-neo-yellow", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+    { name: "Next.js", category: t.skills.categoryNames.Framework, color: "bg-white", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+    { name: "Vue.js", category: t.skills.categoryNames.Framework, color: "bg-neo-green", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" },
   ];
 
   const row2 = [
-    { name: "GitHub Copilot", category: "AI Tool", color: "bg-neo-blue", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
-    { name: "Claude Code", category: "AI Tool", color: "bg-neo-yellow", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chrome/chrome-original.svg" },
-    { name: "Antigravity", category: "AI Tool", color: "bg-neo-green", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" },
-    { name: "Bootstrap", category: "Styling", color: "bg-neo-red", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" },
-    { name: "TypeScript", category: "Language", color: "bg-neo-blue", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
-    { name: "Git & GitHub", category: "Version Control", color: "bg-white", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
-    { name: "VS Code", category: "IDE", color: "bg-neo-blue", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
-    { name: "Figma", category: "Design", color: "bg-neo-red", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
+    { name: "GitHub Copilot", category: t.skills.categoryNames.AITool, color: "bg-neo-blue", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+    { name: "Claude Code", category: t.skills.categoryNames.AITool, color: "bg-neo-yellow", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chrome/chrome-original.svg" },
+    { name: "Antigravity", category: t.skills.categoryNames.AITool, color: "bg-neo-green", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" },
+    { name: "Bootstrap", category: t.skills.categoryNames.Styling, color: "bg-neo-red", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" },
+    { name: "TypeScript", category: t.skills.categoryNames.Language, color: "bg-neo-blue", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+    { name: "Git & GitHub", category: t.skills.categoryNames.VersionControl, color: "bg-white", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+    { name: "VS Code", category: t.skills.categoryNames.IDE, color: "bg-neo-blue", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
+    { name: "Figma", category: t.skills.categoryNames.Design, color: "bg-neo-red", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
   ];
 
   const categories = [
     {
-      title: "Backend & Database",
+      title: t.skills.backendTitle,
       icon: <Database className="h-4 w-4 stroke-[2.5]" />,
       color: "bg-neo-yellow",
       skills: ["Laravel 12", "PHP (OOP & Native)", "MySQL", "RESTful API Architecture", "Livewire"],
     },
     {
-      title: "Frontend & Styling",
+      title: t.skills.frontendTitle,
       icon: <Code2 className="h-4 w-4 stroke-[2.5]" />,
       color: "bg-neo-blue",
       skills: ["Tailwind CSS", "Next.js / React", "Vue.js", "JavaScript (ES6+)", "TypeScript", "Bootstrap"],
     },
     {
-      title: "AI Developer Tooling",
+      title: t.skills.aiTitle,
       icon: <Bot className="h-4 w-4 stroke-[2.5]" />,
       color: "bg-neo-green",
       skills: ["GitHub Copilot", "Claude Code", "Antigravity IDE", "Prompt Engineering & Pair Coding"],
     },
     {
-      title: "Workflow & Tools",
+      title: t.skills.toolsTitle,
       icon: <Wrench className="h-4 w-4 stroke-[2.5]" />,
       color: "bg-neo-red",
       skills: ["Git & GitHub Workflow", "VS Code", "Figma", "Technical Documentation", "i18n Localization"],
@@ -62,10 +65,10 @@ export default function Skills() {
         <div className="flex flex-col items-center gap-2 mb-16 text-center">
           <div className="neo-badge bg-neo-green text-black px-3.5 py-1 rounded-md text-xs inline-flex items-center gap-1.5 rotate-1">
             <Cpu className="h-3.5 w-3.5 stroke-[3]" />
-            <span>02 / KEAHLIAN &amp; TEKNOLOGI</span>
+            <span>{t.skills.tag}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-foreground mt-2">
-            Tech Stack &amp; AI Tooling
+            {t.skills.title}
           </h2>
           <div className="h-2 w-24 bg-neo-yellow border-2 border-black shadow-[2px_2px_0px_0px_#000] mt-1" />
         </div>
@@ -158,4 +161,5 @@ export default function Skills() {
     </section>
   );
 }
+
 

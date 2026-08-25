@@ -1,12 +1,19 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { ArrowRight, Sparkles, Send, FileText, CheckCircle2 } from "lucide-react";
+import { useLanguage } from "./LanguageContext";
+import { ArrowRight, Send } from "lucide-react";
 
 export default function Hero() {
-  const words = ["Skalabel", "Performa Tinggi", "B2B & B2C", "User-Friendly", "Modern"];
+  const { t } = useLanguage();
+  const words = t.hero.words;
   const [wordIndex, setWordIndex] = useState(0);
   const [fadeState, setFadeState] = useState("fade-in");
+
+  useEffect(() => {
+    // Reset index if words change on language switch
+    setWordIndex(0);
+  }, [words]);
 
   useEffect(() => {
     const wordTimer = setInterval(() => {
@@ -18,7 +25,7 @@ export default function Hero() {
     }, 2800);
 
     return () => clearInterval(wordTimer);
-  }, []);
+  }, [words.length]);
 
   const handleScrollTo = (id: string) => {
     const target = document.querySelector(id);
@@ -43,12 +50,12 @@ export default function Hero() {
         {/* Status Pill Badge */}
         <div className="neo-badge bg-neo-green text-black px-4 py-1.5 rounded-full inline-flex items-center gap-2 animate-bounce">
           <span className="w-2.5 h-2.5 rounded-full bg-black animate-ping" />
-          <span>Tersedia untuk Peluang &amp; Proyek Baru</span>
+          <span>{t.hero.statusBadge}</span>
         </div>
 
         {/* Big Catchy Title */}
         <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.2] text-foreground select-none">
-          Membangun Solusi Web Yang{" "}
+          {t.hero.titlePrefix}{" "}
           <span className="inline-block my-2">
             <span
               className={`inline-block px-4 py-1 rounded-xl border-2 border-black bg-neo-yellow text-black shadow-[4px_4px_0px_0px_#000000] -rotate-1 transition-all duration-300 font-black ${
@@ -57,15 +64,15 @@ export default function Hero() {
                   : "opacity-0 scale-95"
               }`}
             >
-              {words[wordIndex]}
+              {words[wordIndex] || words[0]}
             </span>
           </span>
         </h1>
 
         {/* Sub-description based on Resume */}
         <p className="max-w-2xl text-base sm:text-lg text-foreground/80 leading-relaxed font-medium">
-          Halo, saya <strong className="text-foreground font-black underline decoration-neo-yellow decoration-4 underline-offset-2">Naufal Hanif Fauzi</strong>. 
-          Fresh graduate <span className="font-bold text-foreground">S1 Teknik Informatika (Universitas Pamulang)</span> &amp; Full-Stack Web Developer dengan 4 tahun latar belakang web development. Berpengalaman membangun platform multi-seller B2B &amp; B2C skala besar menggunakan <span className="font-bold text-foreground">Laravel, MySQL, Tailwind CSS</span>, serta memanfaatkan modern <span className="font-bold text-foreground">AI Tooling</span>.
+          {t.hero.bioGreeting} <strong className="text-foreground font-black underline decoration-neo-yellow decoration-4 underline-offset-2">{t.hero.bioName}</strong>.{" "}
+          {t.hero.bioBody.replace("Halo, saya Naufal Hanif Fauzi. ", "").replace("Hello, I am Naufal Hanif Fauzi. ", "")}
         </p>
 
         {/* Action Buttons */}
@@ -74,7 +81,7 @@ export default function Hero() {
             onClick={() => handleScrollTo("#projects")}
             className="neo-btn bg-neo-yellow text-black px-6 py-3.5 rounded-xl text-sm font-extrabold inline-flex items-center justify-center gap-2 w-full sm:w-auto"
           >
-            <span>Lihat Portofolio Proyek</span>
+            <span>{t.hero.viewProjects}</span>
             <ArrowRight className="h-4 w-4 stroke-[3]" />
           </button>
 
@@ -83,27 +90,28 @@ export default function Hero() {
             className="neo-btn bg-neo-blue text-black px-6 py-3.5 rounded-xl text-sm font-extrabold inline-flex items-center justify-center gap-2 w-full sm:w-auto"
           >
             <Send className="h-4 w-4 stroke-[2.5]" />
-            <span>Hubungi Saya</span>
+            <span>{t.hero.contactMe}</span>
           </button>
         </div>
 
         {/* Floating Quirky Tech Badges */}
         <div className="flex flex-wrap justify-center items-center gap-3 mt-6 select-none">
           <div className="neo-badge bg-card text-foreground px-3 py-1.5 rounded-lg text-xs font-mono -rotate-2">
-            ⚡ Laravel &amp; Next.js
+            {t.hero.badge1}
           </div>
           <div className="neo-badge bg-neo-yellow text-black px-3 py-1.5 rounded-lg text-xs font-mono rotate-1">
-            🤖 AI-Assisted (Copilot, Claude, Antigravity)
+            {t.hero.badge2}
           </div>
           <div className="neo-badge bg-neo-green text-black px-3 py-1.5 rounded-lg text-xs font-mono -rotate-1">
-            🎓 S1 Teknik Informatika
+            {t.hero.badge3}
           </div>
           <div className="neo-badge bg-neo-red text-black px-3 py-1.5 rounded-lg text-xs font-mono rotate-2">
-            📍 Tangerang Selatan
+            {t.hero.badge4}
           </div>
         </div>
       </div>
     </section>
   );
 }
+
 

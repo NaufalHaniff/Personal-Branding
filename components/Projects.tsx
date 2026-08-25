@@ -1,70 +1,37 @@
 "use client";
 
 import React, { useState } from "react";
-import { FolderGit2, ExternalLink, Sparkles, Layers, ArrowUpRight } from "lucide-react";
-
-interface Project {
-  title: string;
-  subtitle: string;
-  description: string;
-  category: "Semua" | "B2B Platform" | "Skripsi & Riset" | "Sistem Inventaris";
-  tags: string[];
-  demoUrl: string;
-  githubUrl: string;
-  image?: string;
-  isFeatured?: boolean;
-  accentColor: string;
-}
+import { useLanguage } from "./LanguageContext";
+import { FolderGit2, Sparkles, ArrowUpRight } from "lucide-react";
 
 export default function Projects() {
-  const [activeTab, setActiveTab] = useState<string>("Semua");
+  const { t } = useLanguage();
+  const [activeTabKey, setActiveTabKey] = useState<"all" | "b2b" | "thesis" | "inventory">("all");
 
-  const tabs = ["Semua", "B2B Platform", "Skripsi & Riset", "Sistem Inventaris"];
-
-  const projects: Project[] = [
-    {
-      title: "B2B Multi-Seller Platform (SSBO)",
-      subtitle: "PT Oka Iki Indonesia",
-      description:
-        "Platform e-commerce grosir B2B multi-seller terintegrasi dengan fitur Request for Quotation (RFQ), negosiasi harga real-time langsung ke enterprise buyer, sistem checkout responsif, multi-bahasa dinamis (i18n), serta modul Affiliate & Finance Management.",
-      category: "B2B Platform",
-      tags: ["Laravel 12", "Livewire", "MySQL", "Tailwind CSS", "i18n", "PHP"],
-      demoUrl: "https://ssbo.co.id",
-      githubUrl: "https://github.com/NaufalHaniff",
-      image: "/projects/SSBO Marketplace B2B.png",
-      isFeatured: true,
-      accentColor: "bg-neo-yellow",
-    },
-    {
-      title: "SPK Pemilihan Kendaraan Listrik (Metode MOORA)",
-      subtitle: "Undergraduate Thesis Project — Universitas Pamulang",
-      description:
-        "Sistem Pendukung Keputusan (SPK) berbasis web untuk menentukan rekomendasi kendaraan listrik terbaik secara objektif. Menggunakan metode Multi-Objective Optimization on the basis of Ratio Analysis (MOORA) dengan kalkulasi multi-kriteria terbobot.",
-      category: "Skripsi & Riset",
-      tags: ["PHP / Laravel", "MySQL", "MOORA Algorithm", "Decision Support System", "Tailwind CSS"],
-      demoUrl: "https://github.com/NaufalHaniff",
-      githubUrl: "https://github.com/NaufalHaniff",
-      isFeatured: false,
-      accentColor: "bg-neo-blue",
-    },
-    {
-      title: "Ice Cream Inventory Monitoring System",
-      subtitle: "PT Dessert Empire Indonesia",
-      description:
-        "Aplikasi web monitoring inventaris internal untuk pelacakan pergerakan stok produk es krim secara real-time. Memastikan manajemen data pergudangan yang efisien dan akurat dengan dokumentasi arsitektur sistem lengkap.",
-      category: "Sistem Inventaris",
-      tags: ["Native PHP", "MySQL", "Inventory System", "Bootstrap", "Data Handling"],
-      demoUrl: "https://github.com/NaufalHaniff",
-      githubUrl: "https://github.com/NaufalHaniff",
-      isFeatured: false,
-      accentColor: "bg-neo-green",
-    },
+  const tabs: { key: "all" | "b2b" | "thesis" | "inventory"; label: string }[] = [
+    { key: "all", label: t.projects.tabs.all },
+    { key: "b2b", label: t.projects.tabs.b2b },
+    { key: "thesis", label: t.projects.tabs.thesis },
+    { key: "inventory", label: t.projects.tabs.inventory },
   ];
 
   const filteredProjects =
-    activeTab === "Semua"
-      ? projects
-      : projects.filter((project) => project.category === activeTab);
+    activeTabKey === "all"
+      ? t.projects.items
+      : t.projects.items.filter((project) => project.categoryKey === activeTabKey);
+
+  const getCategoryLabel = (categoryKey: "all" | "b2b" | "thesis" | "inventory") => {
+    switch (categoryKey) {
+      case "b2b":
+        return t.projects.tabs.b2b;
+      case "thesis":
+        return t.projects.tabs.thesis;
+      case "inventory":
+        return t.projects.tabs.inventory;
+      default:
+        return t.projects.tabs.all;
+    }
+  };
 
   return (
     <section id="projects" className="py-24 px-4 sm:px-6 relative overflow-hidden bg-card border-b-2 border-black">
@@ -73,10 +40,10 @@ export default function Projects() {
         <div className="flex flex-col items-center gap-2 mb-12 text-center">
           <div className="neo-badge bg-neo-yellow text-black px-3.5 py-1 rounded-md text-xs inline-flex items-center gap-1.5 -rotate-1">
             <FolderGit2 className="h-3.5 w-3.5 stroke-[3]" />
-            <span>03 / PORTOFOLIO PROYEK</span>
+            <span>{t.projects.tag}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-foreground mt-2">
-            Karya &amp; Proyek Terpilih
+            {t.projects.title}
           </h2>
           <div className="h-2 w-24 bg-neo-blue border-2 border-black shadow-[2px_2px_0px_0px_#000] mt-1" />
         </div>
@@ -85,22 +52,22 @@ export default function Projects() {
         <div className="flex flex-wrap justify-center gap-2.5 mb-12 select-none">
           {tabs.map((tab) => (
             <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
+              key={tab.key}
+              onClick={() => setActiveTabKey(tab.key)}
               className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-black transition-all ${
-                activeTab === tab
+                activeTabKey === tab.key
                   ? "neo-box bg-neo-yellow text-black -rotate-1"
                   : "border-2 border-black bg-background text-foreground hover:bg-black/5 dark:hover:bg-white/10"
               }`}
             >
-              {tab}
+              {tab.label}
             </button>
           ))}
         </div>
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
-          {filteredProjects.map((project, index) => (
+          {filteredProjects.map((project) => (
             <div
               key={project.title}
               className="neo-box-lg rounded-2xl bg-background flex flex-col justify-between overflow-hidden hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
@@ -114,7 +81,7 @@ export default function Projects() {
                     <div className="w-3 h-3 rounded-full bg-neo-green border border-black" />
                   </div>
                   <span className={`neo-badge ${project.accentColor} text-black px-2 py-0.5 rounded text-[10px] font-mono`}>
-                    {project.category}
+                    {getCategoryLabel(project.categoryKey)}
                   </span>
                 </div>
 
@@ -130,7 +97,7 @@ export default function Projects() {
                 ) : (
                   <div className="aspect-video w-full border-b-2 border-black bg-card p-6 flex flex-col justify-center items-center text-center">
                     <FolderGit2 className="h-10 w-10 text-foreground/40 mb-2 stroke-[1.5]" />
-                    <span className="font-mono font-bold text-xs text-foreground/60">Sistem Web / Repository</span>
+                    <span className="font-mono font-bold text-xs text-foreground/60">{t.projects.repoWeb}</span>
                   </div>
                 )}
 
@@ -139,7 +106,7 @@ export default function Projects() {
                   {project.isFeatured && (
                     <div className="neo-badge bg-neo-green text-black px-2.5 py-0.5 rounded text-[10px] inline-flex items-center gap-1 mb-3">
                       <Sparkles className="h-3 w-3 stroke-[3]" />
-                      <span>Featured Project</span>
+                      <span>{t.projects.featured}</span>
                     </div>
                   )}
 
@@ -177,7 +144,7 @@ export default function Projects() {
                   rel="noreferrer"
                   className="neo-btn-sm bg-neo-yellow text-black px-3.5 py-1.5 rounded-lg text-xs font-black inline-flex items-center gap-1 flex-1 justify-center"
                 >
-                  <span>Live Demo / Web</span>
+                  <span>{t.projects.liveDemo}</span>
                   <ArrowUpRight className="h-3.5 w-3.5 stroke-[3]" />
                 </a>
 
@@ -187,7 +154,7 @@ export default function Projects() {
                   rel="noreferrer"
                   className="neo-btn-sm bg-background text-foreground px-3.5 py-1.5 rounded-lg text-xs font-black inline-flex items-center gap-1 justify-center"
                 >
-                  <span>GitHub</span>
+                  <span>{t.projects.github}</span>
                 </a>
               </div>
             </div>
@@ -197,4 +164,5 @@ export default function Projects() {
     </section>
   );
 }
+
 

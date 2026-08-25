@@ -2,20 +2,22 @@
 
 import React, { useState, useEffect } from "react";
 import { useTheme } from "./ThemeContext";
-import { Sun, Moon, Menu, X, Terminal } from "lucide-react";
+import { useLanguage } from "./LanguageContext";
+import { Sun, Moon, Menu, X, Globe } from "lucide-react";
 
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
+  const { language, toggleLanguage, t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
   const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "Tentang", href: "#about" },
-    { name: "Keahlian", href: "#skills" },
-    { name: "Proyek", href: "#projects" },
-    { name: "Kontak", href: "#contact" },
+    { name: t.nav.home, href: "#home" },
+    { name: t.nav.about, href: "#about" },
+    { name: t.nav.skills, href: "#skills" },
+    { name: t.nav.projects, href: "#projects" },
+    { name: t.nav.contact, href: "#contact" },
   ];
 
   useEffect(() => {
@@ -100,23 +102,45 @@ export default function Navbar() {
 
           <div className="h-6 w-[2px] bg-black dark:bg-zinc-700" />
 
-          {/* Theme Toggle Button */}
-          <button
-            onClick={toggleTheme}
-            className="neo-btn-sm p-2 rounded-lg bg-neo-green text-black flex items-center justify-center"
-            aria-label="Toggle Theme"
-            title="Ganti Tema"
-          >
-            {theme === "dark" ? (
-              <Sun className="h-4 w-4 stroke-[2.5]" />
-            ) : (
-              <Moon className="h-4 w-4 stroke-[2.5]" />
-            )}
-          </button>
+          <div className="flex items-center gap-2">
+            {/* Language Toggle Button */}
+            <button
+              onClick={toggleLanguage}
+              className="neo-btn-sm px-2.5 py-1.5 rounded-lg bg-neo-yellow text-black flex items-center gap-1.5 text-xs font-black"
+              aria-label="Switch Language"
+              title="Ganti Bahasa (ID / EN)"
+            >
+              <Globe className="h-3.5 w-3.5 stroke-[2.5]" />
+              <span>{language.toUpperCase()}</span>
+            </button>
+
+            {/* Theme Toggle Button */}
+            <button
+              onClick={toggleTheme}
+              className="neo-btn-sm p-2 rounded-lg bg-neo-green text-black flex items-center justify-center"
+              aria-label="Toggle Theme"
+              title="Ganti Tema"
+            >
+              {theme === "dark" ? (
+                <Sun className="h-4 w-4 stroke-[2.5]" />
+              ) : (
+                <Moon className="h-4 w-4 stroke-[2.5]" />
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Action Buttons */}
         <div className="flex items-center gap-2 md:hidden">
+          <button
+            onClick={toggleLanguage}
+            className="neo-btn-sm px-2 py-1.5 rounded-lg bg-neo-yellow text-black flex items-center gap-1 text-xs font-black"
+            aria-label="Switch Language"
+          >
+            <Globe className="h-3.5 w-3.5 stroke-[2.5]" />
+            <span>{language.toUpperCase()}</span>
+          </button>
+
           <button
             onClick={toggleTheme}
             className="neo-btn-sm p-2 rounded-lg bg-neo-green text-black flex items-center justify-center"
@@ -163,4 +187,5 @@ export default function Navbar() {
     </header>
   );
 }
+
 

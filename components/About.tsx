@@ -1,48 +1,16 @@
 "use client";
 
 import React from "react";
-import { User, Briefcase, GraduationCap, Award, Sparkles, CheckCircle2, ChevronRight } from "lucide-react";
+import { useLanguage } from "./LanguageContext";
+import { User, Briefcase } from "lucide-react";
 
 export default function About() {
-  const stats = [
-    { value: "4+ Tahun", label: "Web Dev Background", color: "bg-neo-yellow" },
-    { value: "3 Proyek", label: "Produksi & Skripsi", color: "bg-neo-green" },
-    { value: "S1 Informatika", label: "Universitas Pamulang", color: "bg-neo-red" },
-  ];
+  const { t } = useLanguage();
 
-  const experiences = [
-    {
-      role: "Full-Stack Developer",
-      company: "PT Oka Iki Indonesia",
-      period: "Okt 2025 - Sekarang",
-      color: "bg-neo-yellow",
-      description: [
-        "Fokus pada ekosistem Laravel dalam pengembangan end-to-end platform Business-to-Business (B2B) multi-seller berskala besar.",
-        "Merancang antarmuka responsif untuk desktop dan mobile dengan fitur dynamic multi-language (i18n) dan modul affiliate marketing.",
-        "Mengembangkan fitur negosiasi & Request for Quotation (RFQ) pada panel seller untuk transaksi skala enterprise.",
-        "Membangun modul Admin Dashboard dan Finance Management untuk audit serta tracking arus pendapatan platform.",
-      ],
-    },
-    {
-      role: "Full-Stack Developer (Internship / Kerja Praktik)",
-      company: "PT Dessert Empire Indonesia",
-      period: "Mei 2024 - Jul 2024",
-      color: "bg-neo-blue",
-      description: [
-        "Membangun sistem monitoring inventaris produk es krim berbasis web untuk pelacakan pergerakan stok secara real-time.",
-        "Mengembangkan fungsi frontend dan backend menggunakan Native PHP dan database MySQL secara terstruktur.",
-        "Menyusun dokumentasi teknis arsitektur sistem dan memberikan panduan operasional sistem.",
-      ],
-    },
-    {
-      role: "Teaching Assistant (Internship)",
-      company: "PT Racer Robotic Indonesia",
-      period: "Nov 2018 - Feb 2019",
-      color: "bg-neo-green",
-      description: [
-        "Menyampaikan modul edukasi dasar robotika & perakitan, serta menjadi panitia acara edukasi Roboland dan kompetisi IYRC Indonesia.",
-      ],
-    },
+  const stats = [
+    { value: t.about.stat1Val, label: t.about.stat1Label, color: "bg-neo-yellow" },
+    { value: t.about.stat2Val, label: t.about.stat2Label, color: "bg-neo-green" },
+    { value: t.about.stat3Val, label: t.about.stat3Label, color: "bg-neo-red" },
   ];
 
   return (
@@ -52,10 +20,10 @@ export default function About() {
         <div className="flex flex-col items-center md:items-start gap-2 mb-16 text-center md:text-left">
           <div className="neo-badge bg-neo-yellow text-black px-3.5 py-1 rounded-md text-xs inline-flex items-center gap-1.5 -rotate-1">
             <User className="h-3.5 w-3.5 stroke-[3]" />
-            <span>01 / TENTANG DIRI SAYA</span>
+            <span>{t.about.tag}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-foreground mt-2">
-            Perjalanan Profesional &amp; Latar Belakang
+            {t.about.title}
           </h2>
           <div className="h-2 w-24 bg-neo-green border-2 border-black shadow-[2px_2px_0px_0px_#000] mt-1" />
         </div>
@@ -66,15 +34,15 @@ export default function About() {
           <div className="lg:col-span-7 flex flex-col gap-6 text-left">
             <div className="neo-box p-6 sm:p-8 rounded-2xl bg-background">
               <h3 className="text-xl sm:text-2xl font-black text-foreground mb-4 leading-snug">
-                Menghubungkan logika backend yang tangguh dengan visual interaktif yang nyaman digunakan.
+                {t.about.headline}
               </h3>
 
               <p className="text-foreground/85 leading-relaxed text-sm sm:text-base mb-4 font-medium">
-                Saya adalah <strong className="text-foreground font-black">Naufal Hanif Fauzi</strong>, lulusan S1 Teknik Informatika dari <strong className="text-foreground font-black">Universitas Pamulang (2021 – 2025)</strong>. Berbekal 4 tahun pengalaman membangun aplikasi web dan hampir 1 tahun pengalaman profesional, saya berspesialisasi dalam ekosistem <strong className="text-foreground font-black">Laravel, MySQL, dan Tailwind CSS</strong> untuk platform B2B dan B2C.
+                {t.about.p1Body}
               </p>
 
               <p className="text-foreground/85 leading-relaxed text-sm sm:text-base font-medium">
-                Saya secara aktif mengintegrasikan modern AI tooling seperti <span className="underline decoration-neo-yellow decoration-2 font-bold text-foreground">GitHub Copilot, Claude Code, dan Antigravity</span> untuk mempercepat proses riset, penulisan kode berkualitas, dan efisiensi arsitektur sistem.
+                {t.about.p2}
               </p>
             </div>
 
@@ -120,7 +88,7 @@ export default function About() {
                   <br />
                   <span className="text-sky-300">"kampus"</span>: <span className="text-emerald-300">"Universitas Pamulang"</span>,
                   <br />
-                  <span className="text-sky-300">"peran"</span>: <span className="text-emerald-300">"Full-Stack Web Developer"</span>,
+                  <span className="text-sky-300">"peran"</span>: <span className="text-emerald-300">"{t.about.terminalRole}"</span>,
                   <br />
                   <span className="text-sky-300">"coreStack"</span>: <span className="text-yellow-300">{"["}</span>
                   <div className="pl-4">
@@ -148,11 +116,11 @@ export default function About() {
         <div className="flex flex-col gap-6 text-left">
           <div className="neo-badge bg-neo-blue text-black px-3 py-1 rounded-md text-xs self-start inline-flex items-center gap-1.5">
             <Briefcase className="h-3.5 w-3.5 stroke-[3]" />
-            <span>PENGALAMAN KERJA PROFESIONAL</span>
+            <span>{t.about.experienceTitle}</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {experiences.map((exp, idx) => (
+            {t.about.experiences.map((exp, idx) => (
               <div
                 key={idx}
                 className="neo-box p-6 rounded-2xl bg-background flex flex-col justify-between hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
@@ -187,4 +155,5 @@ export default function About() {
     </section>
   );
 }
+
 

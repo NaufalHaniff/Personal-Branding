@@ -1,9 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import { Mail, MapPin, Phone, Send, CheckCircle2, AlertCircle, MessageSquare, Globe, ArrowUpRight } from "lucide-react";
+import { useLanguage } from "./LanguageContext";
+import { Mail, MapPin, Phone, Send, CheckCircle2, AlertCircle, MessageSquare } from "lucide-react";
 
 export default function Contact() {
+  const { t } = useLanguage();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,13 +25,13 @@ export default function Contact() {
     e.preventDefault();
 
     if (!formData.name || !formData.email || !formData.message) {
-      setErrorMsg("Semua bidang formulir wajib diisi!");
+      setErrorMsg(t.contact.errRequired);
       setStatus("error");
       return;
     }
 
     if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      setErrorMsg("Format alamat email Anda tidak valid!");
+      setErrorMsg(t.contact.errEmail);
       setStatus("error");
       return;
     }
@@ -49,10 +52,10 @@ export default function Contact() {
         <div className="flex flex-col items-center gap-2 mb-16 text-center">
           <div className="neo-badge bg-neo-red text-black px-3.5 py-1 rounded-md text-xs inline-flex items-center gap-1.5 -rotate-1">
             <MessageSquare className="h-3.5 w-3.5 stroke-[3]" />
-            <span>04 / HUBUNGI SAYA</span>
+            <span>{t.contact.tag}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-foreground mt-2">
-            Mari Terhubung &amp; Berkolaborasi
+            {t.contact.title}
           </h2>
           <div className="h-2 w-24 bg-neo-green border-2 border-black shadow-[2px_2px_0px_0px_#000] mt-1" />
         </div>
@@ -63,10 +66,10 @@ export default function Contact() {
           <div className="lg:col-span-5 flex flex-col gap-6">
             <div className="neo-box p-6 rounded-2xl bg-card">
               <h3 className="text-xl sm:text-2xl font-black text-foreground mb-3 leading-snug">
-                Punya penawaran proyek atau ingin berdiskusi?
+                {t.contact.cardHeadline}
               </h3>
               <p className="text-sm text-foreground/80 leading-relaxed font-medium">
-                Saya selalu terbuka untuk mendiskusikan peluang kerja penuh waktu (*Full-time*), kontrak, arsitektur sistem web skala B2B/B2C, integrasi AI workflow, maupun sekadar bertukar sapa.
+                {t.contact.cardDesc}
               </p>
             </div>
 
@@ -81,7 +84,7 @@ export default function Contact() {
                   <Mail className="h-5 w-5 stroke-[2.5]" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <span className="text-[10px] font-mono font-bold text-foreground/60 uppercase">Email Langsung</span>
+                  <span className="text-[10px] font-mono font-bold text-foreground/60 uppercase">{t.contact.emailLabel}</span>
                   <p className="text-xs sm:text-sm font-black text-foreground truncate mt-0.5">
                     hellonaufalhanif@gmail.com
                   </p>
@@ -99,7 +102,7 @@ export default function Contact() {
                   <Phone className="h-5 w-5 stroke-[2.5]" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <span className="text-[10px] font-mono font-bold text-foreground/60 uppercase">WhatsApp / Telepon</span>
+                  <span className="text-[10px] font-mono font-bold text-foreground/60 uppercase">{t.contact.phoneLabel}</span>
                   <p className="text-xs sm:text-sm font-black text-foreground truncate mt-0.5">
                     +62 812-8833-0203
                   </p>
@@ -112,9 +115,9 @@ export default function Contact() {
                   <MapPin className="h-5 w-5 stroke-[2.5]" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-mono font-bold text-foreground/60 uppercase">Domisili</span>
+                  <span className="text-[10px] font-mono font-bold text-foreground/60 uppercase">{t.contact.locationLabel}</span>
                   <p className="text-xs sm:text-sm font-black text-foreground mt-0.5">
-                    Tangerang Selatan, Banten
+                    {t.contact.locationVal}
                   </p>
                 </div>
               </div>
@@ -128,15 +131,15 @@ export default function Contact() {
                 <div className="neo-box p-4 rounded-full bg-neo-green text-black animate-bounce">
                   <CheckCircle2 className="h-10 w-10 stroke-[3]" />
                 </div>
-                <h3 className="text-2xl font-black text-foreground">Pesan Berhasil Terkirim!</h3>
+                <h3 className="text-2xl font-black text-foreground">{t.contact.successTitle}</h3>
                 <p className="max-w-sm text-sm text-foreground/80 font-medium leading-relaxed">
-                  Terima kasih sudah menghubungi saya. Saya akan segera meninjau pesan Anda dan membalasnya secepat mungkin.
+                  {t.contact.successDesc}
                 </p>
                 <button
                   onClick={() => setStatus("idle")}
                   className="neo-btn bg-neo-yellow text-black px-6 py-2.5 rounded-xl text-xs font-black mt-4"
                 >
-                  Kirim Pesan Lainnya
+                  {t.contact.sendAnother}
                 </button>
               </div>
             ) : (
@@ -152,7 +155,7 @@ export default function Contact() {
                   {/* Name field */}
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor="name" className="text-xs font-black text-foreground font-mono">
-                      NAMA LENGKAP *
+                      {t.contact.nameLabel}
                     </label>
                     <input
                       type="text"
@@ -160,7 +163,7 @@ export default function Contact() {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="Masukkan nama Anda"
+                      placeholder={t.contact.namePlaceholder}
                       disabled={status === "loading"}
                       className="neo-input p-3 rounded-xl bg-background text-foreground text-sm placeholder:text-foreground/40 font-medium"
                     />
@@ -169,7 +172,7 @@ export default function Contact() {
                   {/* Email field */}
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor="email" className="text-xs font-black text-foreground font-mono">
-                      ALAMAT EMAIL *
+                      {t.contact.emailLabelInput}
                     </label>
                     <input
                       type="email"
@@ -177,7 +180,7 @@ export default function Contact() {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="nama@email.com"
+                      placeholder={t.contact.emailPlaceholder}
                       disabled={status === "loading"}
                       className="neo-input p-3 rounded-xl bg-background text-foreground text-sm placeholder:text-foreground/40 font-medium"
                     />
@@ -187,7 +190,7 @@ export default function Contact() {
                 {/* Message field */}
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="message" className="text-xs font-black text-foreground font-mono">
-                    DETAIL PESAN / PENAWARAN *
+                    {t.contact.messageLabel}
                   </label>
                   <textarea
                     id="message"
@@ -195,7 +198,7 @@ export default function Contact() {
                     rows={4}
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Ceritakan detail penawaran proyek atau pertanyaan Anda..."
+                    placeholder={t.contact.messagePlaceholder}
                     disabled={status === "loading"}
                     className="neo-input p-3 rounded-xl bg-background text-foreground text-sm placeholder:text-foreground/40 font-medium resize-none"
                   />
@@ -210,12 +213,12 @@ export default function Contact() {
                   {status === "loading" ? (
                     <>
                       <div className="h-4 w-4 rounded-full border-2 border-black border-t-transparent animate-spin" />
-                      <span>Mengirim Pesan...</span>
+                      <span>{t.contact.sendingBtn}</span>
                     </>
                   ) : (
                     <>
                       <Send className="h-4 w-4 stroke-[2.5]" />
-                      <span>Kirim Pesan Sekarang</span>
+                      <span>{t.contact.sendBtn}</span>
                     </>
                   )}
                 </button>
@@ -227,4 +230,5 @@ export default function Contact() {
     </section>
   );
 }
+
 

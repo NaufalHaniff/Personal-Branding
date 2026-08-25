@@ -19,8 +19,8 @@ export default function Skills() {
 
   const row2 = [
     { name: "GitHub Copilot", category: t.skills.categoryNames.AITool, color: "bg-neo-blue", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
-    { name: "Claude Code", category: t.skills.categoryNames.AITool, color: "bg-neo-yellow", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chrome/chrome-original.svg" },
-    { name: "Antigravity", category: t.skills.categoryNames.AITool, color: "bg-neo-green", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" },
+    { name: "Claude Code", category: t.skills.categoryNames.AITool, color: "bg-neo-yellow", icon: "/images/claude.svg" },
+    { name: "Antigravity", category: t.skills.categoryNames.AITool, color: "bg-neo-green", icon: "/images/antigravity.svg" },
     { name: "Bootstrap", category: t.skills.categoryNames.Styling, color: "bg-neo-red", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" },
     { name: "TypeScript", category: t.skills.categoryNames.Language, color: "bg-neo-blue", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
     { name: "Git & GitHub", category: t.skills.categoryNames.VersionControl, color: "bg-white", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },

@@ -15,11 +15,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Naufal Hanif | Full-Stack Developer",
+  title: "Naufal Hanif Fauzi | Full-Stack Developer",
   description: "Portofolio resmi Full-Stack Developer oleh Naufal Hanif Fauzi — Spesialis ekosistem Laravel, Next.js, MySQL, Tailwind CSS, dan AI-assisted development.",
   keywords: [
-    "Naufal Hanif",
     "Naufal Hanif Fauzi",
+    "Naufal Hanif",
     "Full-Stack Developer",
     "Laravel Developer",
     "Next.js Developer",

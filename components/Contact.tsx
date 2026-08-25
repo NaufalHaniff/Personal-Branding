@@ -40,7 +40,7 @@ export default function Contact() {
               className="neo-btn bg-neo-green text-black px-6 py-3.5 rounded-xl text-sm font-extrabold inline-flex items-center justify-center gap-2 w-full sm:w-auto"
             >
               <Phone className="h-4 w-4 stroke-[2.5]" />
-              <span>Chat via WhatsApp</span>
+              <span>{t.contact.chatWaBtn}</span>
               <ArrowUpRight className="h-4 w-4 stroke-[3]" />
             </a>
 
@@ -49,7 +49,7 @@ export default function Contact() {
               className="neo-btn bg-neo-yellow text-black px-6 py-3.5 rounded-xl text-sm font-extrabold inline-flex items-center justify-center gap-2 w-full sm:w-auto"
             >
               <Mail className="h-4 w-4 stroke-[2.5]" />
-              <span>Kirim Email Langsung</span>
+              <span>{t.contact.sendDirectEmailBtn}</span>
               <ArrowUpRight className="h-4 w-4 stroke-[3]" />
             </a>
           </div>
@@ -74,7 +74,7 @@ export default function Contact() {
               </p>
             </div>
             <div className="mt-6 pt-4 border-t-2 border-black/10 flex items-center justify-between text-xs font-bold text-foreground/80 group-hover:text-black dark:group-hover:text-white">
-              <span>Kirim Pesan Email</span>
+              <span>{t.contact.sendEmailAction}</span>
               <ArrowUpRight className="h-4 w-4 stroke-[2.5] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </div>
           </a>
@@ -98,7 +98,7 @@ export default function Contact() {
               </p>
             </div>
             <div className="mt-6 pt-4 border-t-2 border-black/10 flex items-center justify-between text-xs font-bold text-foreground/80 group-hover:text-black dark:group-hover:text-white">
-              <span>Buka WhatsApp</span>
+              <span>{t.contact.openWaAction}</span>
               <ArrowUpRight className="h-4 w-4 stroke-[2.5] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </div>
           </a>
@@ -117,7 +117,7 @@ export default function Contact() {
               </p>
             </div>
             <div className="mt-6 pt-4 border-t-2 border-black/10 flex items-center justify-between text-[11px] font-mono font-bold text-foreground/60">
-              <span>Open Remote &amp; On-site</span>
+              <span>{t.contact.openWorkType}</span>
             </div>
           </div>
         </div>

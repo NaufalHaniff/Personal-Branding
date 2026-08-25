@@ -4,6 +4,20 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 
 export type Language = "id" | "en";
 
+export interface ProjectItem {
+  title: string;
+  subtitle: string;
+  description: string;
+  categoryKey: "all" | "b2b" | "thesis" | "inventory";
+  tags: string[];
+  demoUrl: string;
+  githubUrl: string;
+  image?: string;
+  images?: string[];
+  isFeatured?: boolean;
+  accentColor: string;
+}
+
 export interface Translations {
   nav: {
     home: string;
@@ -41,6 +55,20 @@ export interface Translations {
     stat3Val: string;
     stat3Label: string;
     terminalRole: string;
+    terminalJson: {
+      nameKey: string;
+      nameVal: string;
+      degreeKey: string;
+      degreeVal: string;
+      universityKey: string;
+      universityVal: string;
+      roleKey: string;
+      roleVal: string;
+      coreStackKey: string;
+      aiToolingKey: string;
+      locationKey: string;
+      locationVal: string;
+    };
     experienceTitle: string;
     experiences: {
       role: string;
@@ -81,18 +109,14 @@ export interface Translations {
     github: string;
     featured: string;
     repoWeb: string;
-    items: {
-      title: string;
-      subtitle: string;
-      description: string;
-      categoryKey: "all" | "b2b" | "thesis" | "inventory";
-      tags: string[];
-      demoUrl: string;
-      githubUrl: string;
-      image?: string;
-      isFeatured?: boolean;
-      accentColor: string;
-    }[];
+    viewImagesText: string;
+    zoomImageText: string;
+    clickToViewGallery: string;
+    clickToZoom: string;
+    closeModal: string;
+    prevImage: string;
+    nextImage: string;
+    items: ProjectItem[];
   };
   contact: {
     tag: string;
@@ -103,6 +127,11 @@ export interface Translations {
     phoneLabel: string;
     locationLabel: string;
     locationVal: string;
+    chatWaBtn: string;
+    sendDirectEmailBtn: string;
+    sendEmailAction: string;
+    openWaAction: string;
+    openWorkType: string;
     nameLabel: string;
     namePlaceholder: string;
     emailLabelInput: string;
@@ -164,6 +193,20 @@ export const dictionaries: Record<Language, Translations> = {
       stat3Val: "S1 Informatika",
       stat3Label: "Universitas Pamulang",
       terminalRole: "Full-Stack Web Developer",
+      terminalJson: {
+        nameKey: "nama",
+        nameVal: "Naufal Hanif Fauzi",
+        degreeKey: "gelar",
+        degreeVal: "S1 Teknik Informatika (S.Kom)",
+        universityKey: "kampus",
+        universityVal: "Universitas Pamulang",
+        roleKey: "peran",
+        roleVal: "Full-Stack Web Developer",
+        coreStackKey: "coreStack",
+        aiToolingKey: "aiTooling",
+        locationKey: "lokasi",
+        locationVal: "Tangerang Selatan, Banten",
+      },
       experienceTitle: "PENGALAMAN KERJA PROFESIONAL",
       experiences: [
         {
@@ -231,6 +274,13 @@ export const dictionaries: Record<Language, Translations> = {
       github: "GitHub",
       featured: "Featured Project",
       repoWeb: "Sistem Web / Repository",
+      viewImagesText: "Lihat {count} Gambar",
+      zoomImageText: "Perbesar Gambar",
+      clickToViewGallery: "Klik untuk melihat galeri screenshot",
+      clickToZoom: "Klik untuk memperbesar",
+      closeModal: "Tutup (Esc)",
+      prevImage: "Gambar Sebelumnya (Arrow Left)",
+      nextImage: "Gambar Selanjutnya (Arrow Right)",
       items: [
         {
           title: "B2B Multi-Seller Platform (SSBO)",
@@ -241,7 +291,12 @@ export const dictionaries: Record<Language, Translations> = {
           tags: ["Laravel 12", "Livewire", "MySQL", "Tailwind CSS", "i18n", "PHP"],
           demoUrl: "https://ssbo.co.id",
           githubUrl: "https://github.com/NaufalHaniff",
-          image: "/projects/SSBO Marketplace B2B.png",
+          image: "/projects/SSBO B2B Home.png",
+          images: [
+            "/projects/SSBO B2B Home.png",
+            "/projects/SSBO B2B Product.png",
+            "/projects/SSBO B2B Dashboard.png",
+          ],
           isFeatured: true,
           accentColor: "bg-neo-yellow",
         },
@@ -281,6 +336,11 @@ export const dictionaries: Record<Language, Translations> = {
       phoneLabel: "WhatsApp / Telepon",
       locationLabel: "Domisili",
       locationVal: "Tangerang Selatan, Banten",
+      chatWaBtn: "Chat via WhatsApp",
+      sendDirectEmailBtn: "Kirim Email Langsung",
+      sendEmailAction: "Kirim Pesan Email",
+      openWaAction: "Buka WhatsApp",
+      openWorkType: "Open Remote & On-site",
       nameLabel: "NAMA LENGKAP *",
       namePlaceholder: "Masukkan nama Anda",
       emailLabelInput: "ALAMAT EMAIL *",
@@ -342,6 +402,20 @@ export const dictionaries: Record<Language, Translations> = {
       stat3Val: "B.Sc. Informatics",
       stat3Label: "Universitas Pamulang",
       terminalRole: "Full-Stack Web Developer",
+      terminalJson: {
+        nameKey: "name",
+        nameVal: "Naufal Hanif Fauzi",
+        degreeKey: "degree",
+        degreeVal: "Bachelor of Informatics Engineering (B.Sc / S.Kom)",
+        universityKey: "university",
+        universityVal: "Pamulang University",
+        roleKey: "role",
+        roleVal: "Full-Stack Web Developer",
+        coreStackKey: "coreStack",
+        aiToolingKey: "aiTooling",
+        locationKey: "location",
+        locationVal: "South Tangerang, Banten, Indonesia",
+      },
       experienceTitle: "PROFESSIONAL WORK EXPERIENCE",
       experiences: [
         {
@@ -397,8 +471,8 @@ export const dictionaries: Record<Language, Translations> = {
       },
     },
     projects: {
-      tag: "03 / PORTFOLIO PROJECTS",
-      title: "Selected Works & Projects",
+      tag: "03 / SELECTED PROJECTS",
+      title: "Featured Works & Systems",
       tabs: {
         all: "All",
         b2b: "B2B Platform",
@@ -409,6 +483,13 @@ export const dictionaries: Record<Language, Translations> = {
       github: "GitHub",
       featured: "Featured Project",
       repoWeb: "Web System / Repository",
+      viewImagesText: "View {count} Images",
+      zoomImageText: "Zoom Image",
+      clickToViewGallery: "Click to view screenshot gallery",
+      clickToZoom: "Click to zoom image",
+      closeModal: "Close (Esc)",
+      prevImage: "Previous Image (Arrow Left)",
+      nextImage: "Next Image (Arrow Right)",
       items: [
         {
           title: "B2B Multi-Seller Platform (SSBO)",
@@ -419,7 +500,12 @@ export const dictionaries: Record<Language, Translations> = {
           tags: ["Laravel 12", "Livewire", "MySQL", "Tailwind CSS", "i18n", "PHP"],
           demoUrl: "https://ssbo.co.id",
           githubUrl: "https://github.com/NaufalHaniff",
-          image: "/projects/SSBO Marketplace B2B.png",
+          image: "/projects/SSBO B2B Home.png",
+          images: [
+            "/projects/SSBO B2B Home.png",
+            "/projects/SSBO B2B Product.png",
+            "/projects/SSBO B2B Dashboard.png",
+          ],
           isFeatured: true,
           accentColor: "bg-neo-yellow",
         },
@@ -459,6 +545,11 @@ export const dictionaries: Record<Language, Translations> = {
       phoneLabel: "WhatsApp / Phone",
       locationLabel: "Location",
       locationVal: "South Tangerang, Banten, Indonesia",
+      chatWaBtn: "Chat via WhatsApp",
+      sendDirectEmailBtn: "Send Direct Email",
+      sendEmailAction: "Send Email Message",
+      openWaAction: "Open WhatsApp",
+      openWorkType: "Open for Remote & On-site",
       nameLabel: "FULL NAME *",
       namePlaceholder: "Enter your name",
       emailLabelInput: "EMAIL ADDRESS *",

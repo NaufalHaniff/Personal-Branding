@@ -66,10 +66,10 @@ export default function Footer() {
         <div className="flex flex-col gap-1 text-center md:text-left">
           <div className="inline-flex items-center justify-center md:justify-start gap-2">
             <span className="neo-badge bg-neo-yellow text-black px-2.5 py-0.5 rounded text-xs font-black">
-              NaufalHanif
+              Naufal Hanif Fauzi
             </span>
             <p className="text-xs sm:text-sm font-black text-foreground">
-              &copy; {currentYear} Naufal Hanif. {t.footer.allRightsReserved}
+              &copy; {currentYear} Naufal Hanif Fauzi. {t.footer.allRightsReserved}
             </p>
           </div>
         </div>

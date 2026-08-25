@@ -74,7 +74,7 @@ export default function Navbar() {
           className="group inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border-2 border-black bg-neo-yellow text-black font-extrabold text-base tracking-tight shadow-[2px_2px_0px_0px_#000000] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#000000] transition-all select-none"
         >
           <span className="w-2.5 h-2.5 rounded-full bg-neo-green border border-black animate-pulse" />
-          <span className="font-black text-black">NaufalHanif</span>
+          <span className="font-black text-black">Naufal Hanif Fauzi</span>
         </a>
 
         {/* Desktop Navigation Links */}

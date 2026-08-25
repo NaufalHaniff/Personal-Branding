@@ -82,15 +82,15 @@ export default function About() {
               <div className="p-5 overflow-x-auto text-left leading-relaxed">
                 <span className="text-yellow-300">{"{"}</span>
                 <div className="pl-4">
-                  <span className="text-sky-300">"nama"</span>: <span className="text-emerald-300">"Naufal Hanif Fauzi"</span>,
+                  <span className="text-sky-300">"{t.about.terminalJson.nameKey}"</span>: <span className="text-emerald-300">"{t.about.terminalJson.nameVal}"</span>,
                   <br />
-                  <span className="text-sky-300">"gelar"</span>: <span className="text-emerald-300">"S1 Teknik Informatika (S.Kom)"</span>,
+                  <span className="text-sky-300">"{t.about.terminalJson.degreeKey}"</span>: <span className="text-emerald-300">"{t.about.terminalJson.degreeVal}"</span>,
                   <br />
-                  <span className="text-sky-300">"kampus"</span>: <span className="text-emerald-300">"Universitas Pamulang"</span>,
+                  <span className="text-sky-300">"{t.about.terminalJson.universityKey}"</span>: <span className="text-emerald-300">"{t.about.terminalJson.universityVal}"</span>,
                   <br />
-                  <span className="text-sky-300">"peran"</span>: <span className="text-emerald-300">"{t.about.terminalRole}"</span>,
+                  <span className="text-sky-300">"{t.about.terminalJson.roleKey}"</span>: <span className="text-emerald-300">"{t.about.terminalJson.roleVal}"</span>,
                   <br />
-                  <span className="text-sky-300">"coreStack"</span>: <span className="text-yellow-300">{"["}</span>
+                  <span className="text-sky-300">"{t.about.terminalJson.coreStackKey}"</span>: <span className="text-yellow-300">{"["}</span>
                   <div className="pl-4">
                     <span className="text-emerald-300">"Laravel"</span>, <span className="text-emerald-300">"MySQL"</span>,
                     <br />
@@ -98,13 +98,13 @@ export default function About() {
                   </div>
                   <span className="text-yellow-300">{"]"}</span>,
                   <br />
-                  <span className="text-sky-300">"aiTooling"</span>: <span className="text-yellow-300">{"["}</span>
+                  <span className="text-sky-300">"{t.about.terminalJson.aiToolingKey}"</span>: <span className="text-yellow-300">{"["}</span>
                   <div className="pl-4">
                     <span className="text-emerald-300">"GitHub Copilot"</span>, <span className="text-emerald-300">"Claude Code"</span>, <span className="text-emerald-300">"Antigravity"</span>
                   </div>
                   <span className="text-yellow-300">{"]"}</span>,
                   <br />
-                  <span className="text-sky-300">"lokasi"</span>: <span className="text-emerald-300">"Tangerang Selatan, Banten"</span>
+                  <span className="text-sky-300">"{t.about.terminalJson.locationKey}"</span>: <span className="text-emerald-300">"{t.about.terminalJson.locationVal}"</span>
                 </div>
                 <span className="text-yellow-300">{"}"}</span>
               </div>

@@ -162,7 +162,7 @@ export const dictionaries: Record<Language, Translations> = {
       contact: "Kontak",
     },
     hero: {
-      statusBadge: "Tersedia untuk Posisi Full-Time & Proyek Baru",
+      statusBadge: "Tersedia untuk Peluang & Proyek Baru",
       titlePrefix: "Rekayasa Platform Web",
       words: ["B2B & B2C Skala Besar", "Performa Tinggi & Andal", "Arsitektur Skalabel", "Sistem Enterprise", "Akselerasi AI Modern"],
       bioGreeting: "",
@@ -370,7 +370,7 @@ export const dictionaries: Record<Language, Translations> = {
       contact: "Contact",
     },
     hero: {
-      statusBadge: "Available for Full-Time Roles & Projects",
+      statusBadge: "Available for Opportunities & New Projects",
       titlePrefix: "Architecting Web Platforms",
       words: ["Large-Scale B2B & B2C", "High-Performance Systems", "Scalable Architecture", "Enterprise Solutions", "Modern AI Workflows"],
       bioGreeting: "",

@@ -1,176 +1,194 @@
 "use client";
 
 import React, { useState } from "react";
-import { FolderGit2, ExternalLink, Layers } from "lucide-react";
+import { FolderGit2, ExternalLink, Sparkles, Layers, ArrowUpRight } from "lucide-react";
 
 interface Project {
   title: string;
+  subtitle: string;
   description: string;
-  category: "Frontend" | "Backend" | "Full-Stack";
+  category: "Semua" | "B2B Platform" | "Skripsi & Riset" | "Sistem Inventaris";
   tags: string[];
   demoUrl: string;
   githubUrl: string;
   image?: string;
   isFeatured?: boolean;
+  accentColor: string;
 }
 
 export default function Projects() {
-  const [activeTab, setActiveTab] = useState<string>("All");
+  const [activeTab, setActiveTab] = useState<string>("Semua");
 
-  const tabs = ["All", "Full-Stack", "Frontend", "Backend"];
+  const tabs = ["Semua", "B2B Platform", "Skripsi & Riset", "Sistem Inventaris"];
 
   const projects: Project[] = [
     {
-      title: "SSBO Marketplace B2B",
-      description: "Platform e-commerce grosir B2B terintegrasi dengan negosiasi harga real-time, sistem invoice otomatis, restriksi seller, dan multi-bahasa dinamis.",
-      category: "Full-Stack",
-      tags: ["Laravel 12", "Livewire", "MySQL", "Tailwind CSS", "Laravel", "PHP"],
+      title: "B2B Multi-Seller Platform (SSBO)",
+      subtitle: "PT Oka Iki Indonesia",
+      description:
+        "Platform e-commerce grosir B2B multi-seller terintegrasi dengan fitur Request for Quotation (RFQ), negosiasi harga real-time langsung ke enterprise buyer, sistem checkout responsif, multi-bahasa dinamis (i18n), serta modul Affiliate & Finance Management.",
+      category: "B2B Platform",
+      tags: ["Laravel 12", "Livewire", "MySQL", "Tailwind CSS", "i18n", "PHP"],
       demoUrl: "https://ssbo.co.id",
-      githubUrl: "https://github.com",
+      githubUrl: "https://github.com/NaufalHaniff",
       image: "/projects/SSBO Marketplace B2B.png",
       isFeatured: true,
+      accentColor: "bg-neo-yellow",
+    },
+    {
+      title: "SPK Pemilihan Kendaraan Listrik (Metode MOORA)",
+      subtitle: "Undergraduate Thesis Project — Universitas Pamulang",
+      description:
+        "Sistem Pendukung Keputusan (SPK) berbasis web untuk menentukan rekomendasi kendaraan listrik terbaik secara objektif. Menggunakan metode Multi-Objective Optimization on the basis of Ratio Analysis (MOORA) dengan kalkulasi multi-kriteria terbobot.",
+      category: "Skripsi & Riset",
+      tags: ["PHP / Laravel", "MySQL", "MOORA Algorithm", "Decision Support System", "Tailwind CSS"],
+      demoUrl: "https://github.com/NaufalHaniff",
+      githubUrl: "https://github.com/NaufalHaniff",
+      isFeatured: false,
+      accentColor: "bg-neo-blue",
+    },
+    {
+      title: "Ice Cream Inventory Monitoring System",
+      subtitle: "PT Dessert Empire Indonesia",
+      description:
+        "Aplikasi web monitoring inventaris internal untuk pelacakan pergerakan stok produk es krim secara real-time. Memastikan manajemen data pergudangan yang efisien dan akurat dengan dokumentasi arsitektur sistem lengkap.",
+      category: "Sistem Inventaris",
+      tags: ["Native PHP", "MySQL", "Inventory System", "Bootstrap", "Data Handling"],
+      demoUrl: "https://github.com/NaufalHaniff",
+      githubUrl: "https://github.com/NaufalHaniff",
+      isFeatured: false,
+      accentColor: "bg-neo-green",
     },
   ];
 
-  const filteredProjects = activeTab === "All"
-    ? projects
-    : projects.filter((project) => project.category === activeTab);
+  const filteredProjects =
+    activeTab === "Semua"
+      ? projects
+      : projects.filter((project) => project.category === activeTab);
 
   return (
-    <section id="projects" className="py-24 px-6 relative overflow-hidden bg-card/15">
-      {/* Background decoration */}
-      <div className="absolute bottom-[20%] left-[5%] w-[320px] h-[320px] rounded-full bg-primary/5 glow-orb" />
-
+    <section id="projects" className="py-24 px-4 sm:px-6 relative overflow-hidden bg-card border-b-2 border-black">
       <div className="max-w-6xl mx-auto z-10 relative">
         {/* Section Header */}
         <div className="flex flex-col items-center gap-2 mb-12 text-center">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-border bg-card/60 text-xs font-semibold text-primary">
-            <FolderGit2 className="h-3.5 w-3.5" />
-            <span>PORTFOLIO</span>
+          <div className="neo-badge bg-neo-yellow text-black px-3.5 py-1 rounded-md text-xs inline-flex items-center gap-1.5 -rotate-1">
+            <FolderGit2 className="h-3.5 w-3.5 stroke-[3]" />
+            <span>03 / PORTOFOLIO PROYEK</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-            Proyek Pilihan Terkini
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-foreground mt-2">
+            Karya &amp; Proyek Terpilih
           </h2>
-          <div className="h-1 w-20 bg-gradient-to-r from-primary to-secondary rounded-full mt-2" />
+          <div className="h-2 w-24 bg-neo-blue border-2 border-black shadow-[2px_2px_0px_0px_#000] mt-1" />
         </div>
 
-        {/* Tab Filters */}
-        <div className="flex justify-center gap-2 mb-12 select-none">
+        {/* Tab Filter Buttons */}
+        <div className="flex flex-wrap justify-center gap-2.5 mb-12 select-none">
           {tabs.map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-4 py-2 rounded-xl text-xs md:text-sm font-medium transition-all duration-300 border ${activeTab === tab
-                ? "bg-primary border-primary text-white shadow-md shadow-primary/20 scale-[1.03]"
-                : "bg-card/50 border-border text-foreground/60 hover:border-foreground/30 hover:text-foreground hover:bg-card"
-                }`}
+              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-black transition-all ${
+                activeTab === tab
+                  ? "neo-box bg-neo-yellow text-black -rotate-1"
+                  : "border-2 border-black bg-background text-foreground hover:bg-black/5 dark:hover:bg-white/10"
+              }`}
             >
-              {tab === "All" ? "Semua Kategori" : tab}
+              {tab}
             </button>
           ))}
         </div>
 
         {/* Projects Grid */}
-        <div className="flex flex-wrap justify-center gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
           {filteredProjects.map((project, index) => (
             <div
               key={project.title}
-              className="group relative flex flex-col rounded-2xl border border-border bg-card overflow-hidden shadow-sm hover:shadow-lg hover:border-transparent transition-all duration-350 hover:scale-[1.02] w-full max-w-md"
-              style={{
-                // Stagger transition delayed entrance on mount simulated via class
-                animationDelay: `${index * 100}ms`
-              }}
+              className="neo-box-lg rounded-2xl bg-background flex flex-col justify-between overflow-hidden hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
             >
-              {/* Outer Ambient Glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-secondary/0 to-primary/0 opacity-0 group-hover:opacity-100 group-hover:from-primary/10 group-hover:to-secondary/5 transition-opacity duration-350 pointer-events-none" />
-
-              {/* Mock Window Top Bar (Premium aesthetic) */}
-              <div className="flex items-center justify-between px-4 py-2.5 bg-foreground/[0.03] border-b border-border select-none">
-                <div className="flex gap-1.5 group/controls">
-                  <div className="w-2.5 h-2.5 rounded-full bg-red-500/80 flex items-center justify-center text-[7px] font-extrabold text-red-950/70 cursor-default select-none">
-                    <span className="opacity-0 group-hover/controls:opacity-100 transition-opacity duration-150">×</span>
+              {/* Card Window Top Header */}
+              <div>
+                <div className="flex items-center justify-between px-4 py-3 bg-card border-b-2 border-black select-none">
+                  <div className="flex gap-2">
+                    <div className="w-3 h-3 rounded-full bg-neo-red border border-black" />
+                    <div className="w-3 h-3 rounded-full bg-neo-yellow border border-black" />
+                    <div className="w-3 h-3 rounded-full bg-neo-green border border-black" />
                   </div>
-                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80 flex items-center justify-center text-[7px] font-extrabold text-yellow-950/70 cursor-default select-none">
-                    <span className="opacity-0 group-hover/controls:opacity-100 transition-opacity duration-150">−</span>
-                  </div>
-                  <div className="w-2.5 h-2.5 rounded-full bg-green-500/80 flex items-center justify-center text-[7px] font-extrabold text-green-950/70 cursor-default select-none">
-                    <span className="opacity-0 group-hover/controls:opacity-100 transition-opacity duration-150">+</span>
-                  </div>
+                  <span className={`neo-badge ${project.accentColor} text-black px-2 py-0.5 rounded text-[10px] font-mono`}>
+                    {project.category}
+                  </span>
                 </div>
-                <div className="text-[10px] text-foreground/40 font-mono tracking-widest uppercase">
-                  {project.category}
-                </div>
-                <div className="w-9" />
-              </div>
 
-              {/* Project Image Preview */}
-              {project.image && (
-                <div className="relative aspect-video w-full overflow-hidden border-b border-border bg-foreground/[0.02]">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500 ease-out"
-                  />
-                </div>
-              )}
-
-              {/* Card Body */}
-              <div className="p-6 flex flex-col flex-grow z-10 text-left">
-                {/* Project Badge if Featured */}
-                {project.isFeatured && (
-                  <div className="inline-flex self-start items-center gap-1 mb-3.5 px-2 py-0.5 rounded-md bg-primary/15 border border-primary/20 text-[10px] font-semibold text-primary">
-                    <Layers className="h-3 w-3" />
-                    <span>Featured</span>
+                {/* Project Image Preview if available */}
+                {project.image ? (
+                  <div className="relative aspect-video w-full overflow-hidden border-b-2 border-black bg-zinc-100 dark:bg-zinc-800">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                ) : (
+                  <div className="aspect-video w-full border-b-2 border-black bg-card p-6 flex flex-col justify-center items-center text-center">
+                    <FolderGit2 className="h-10 w-10 text-foreground/40 mb-2 stroke-[1.5]" />
+                    <span className="font-mono font-bold text-xs text-foreground/60">Sistem Web / Repository</span>
                   </div>
                 )}
 
-                {/* Title */}
-                <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-300">
-                  {project.title}
-                </h3>
+                {/* Card Body */}
+                <div className="p-6">
+                  {project.isFeatured && (
+                    <div className="neo-badge bg-neo-green text-black px-2.5 py-0.5 rounded text-[10px] inline-flex items-center gap-1 mb-3">
+                      <Sparkles className="h-3 w-3 stroke-[3]" />
+                      <span>Featured Project</span>
+                    </div>
+                  )}
 
-                {/* Description */}
-                <p className="text-sm text-foreground/60 leading-relaxed mt-2 flex-grow min-h-[72px]">
-                  {project.description}
-                </p>
+                  <h3 className="text-lg font-black text-foreground leading-snug">
+                    {project.title}
+                  </h3>
 
-                {/* Tech Chips */}
-                <div className="flex flex-wrap gap-1.5 mt-5">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2 py-0.5 rounded bg-foreground/5 border border-border text-[10px] text-foreground/70 font-mono"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                  <p className="text-xs font-bold text-foreground/60 font-mono mt-1 mb-3">
+                    {project.subtitle}
+                  </p>
+
+                  <p className="text-xs text-foreground/80 leading-relaxed min-h-[60px]">
+                    {project.description}
+                  </p>
+
+                  {/* Tech Tags */}
+                  <div className="flex flex-wrap gap-1.5 mt-5">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-2 py-0.5 rounded border border-black bg-card text-[10px] font-mono font-bold text-foreground shadow-[1px_1px_0px_0px_#000]"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
+              </div>
 
-                {/* Links */}
-                <div className="flex items-center gap-4 mt-6 pt-4 border-t border-border">
-                  <a
-                    href={project.demoUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-primary/80 transition-colors"
-                  >
-                    <ExternalLink className="h-3.5 w-3.5" />
-                    <span>Live Demo</span>
-                  </a>
+              {/* Card Footer Actions */}
+              <div className="p-4 bg-card border-t-2 border-black flex items-center justify-between gap-3">
+                <a
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="neo-btn-sm bg-neo-yellow text-black px-3.5 py-1.5 rounded-lg text-xs font-black inline-flex items-center gap-1 flex-1 justify-center"
+                >
+                  <span>Live Demo / Web</span>
+                  <ArrowUpRight className="h-3.5 w-3.5 stroke-[3]" />
+                </a>
 
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-foreground/60 hover:text-foreground transition-colors"
-                  >
-                    <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                      <path d="M9 18c-4.51 2-5-2-7-2" />
-                    </svg>
-                    <span>Source Code</span>
-                  </a>
-                </div>
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="neo-btn-sm bg-background text-foreground px-3.5 py-1.5 rounded-lg text-xs font-black inline-flex items-center gap-1 justify-center"
+                >
+                  <span>GitHub</span>
+                </a>
               </div>
             </div>
           ))}
@@ -179,3 +197,4 @@ export default function Projects() {
     </section>
   );
 }
+

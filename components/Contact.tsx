@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Mail, MapPin, Send, CheckCircle2, AlertCircle, Sparkles, MessageSquare } from "lucide-react";
+import { Mail, MapPin, Phone, Send, CheckCircle2, AlertCircle, MessageSquare, Globe, ArrowUpRight } from "lucide-react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -20,8 +20,7 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Simple verification
+
     if (!formData.name || !formData.email || !formData.message) {
       setErrorMsg("Semua bidang formulir wajib diisi!");
       setStatus("error");
@@ -37,105 +36,123 @@ export default function Contact() {
     setErrorMsg("");
     setStatus("loading");
 
-    // Simulate API request delay
     setTimeout(() => {
       setStatus("success");
       setFormData({ name: "", email: "", message: "" });
-    }, 1800);
+    }, 1200);
   };
 
   return (
-    <section id="contact" className="py-24 px-6 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-[20%] right-[10%] w-[300px] h-[300px] rounded-full bg-secondary/5 glow-orb" />
-      
+    <section id="contact" className="py-24 px-4 sm:px-6 relative overflow-hidden bg-background">
       <div className="max-w-6xl mx-auto z-10 relative">
         {/* Section Header */}
         <div className="flex flex-col items-center gap-2 mb-16 text-center">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-border bg-card/60 text-xs font-semibold text-primary">
-            <MessageSquare className="h-3.5 w-3.5" />
-            <span>HUBUNGI SAYA</span>
+          <div className="neo-badge bg-neo-red text-black px-3.5 py-1 rounded-md text-xs inline-flex items-center gap-1.5 -rotate-1">
+            <MessageSquare className="h-3.5 w-3.5 stroke-[3]" />
+            <span>04 / HUBUNGI SAYA</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-            Mari Kolaborasi Bersama
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-foreground mt-2">
+            Mari Terhubung &amp; Berkolaborasi
           </h2>
-          <div className="h-1 w-20 bg-gradient-to-r from-primary to-secondary rounded-full mt-2" />
+          <div className="h-2 w-24 bg-neo-green border-2 border-black shadow-[2px_2px_0px_0px_#000] mt-1" />
         </div>
 
         {/* Content Split */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start text-left">
-          {/* Info Side (Col 2) */}
-          <div className="lg:col-span-2 flex flex-col gap-6">
-            <h3 className="text-2xl font-bold text-foreground">
-              Ada ide proyek menarik atau ingin berdiskusi?
-            </h3>
-            
-            <p className="text-foreground/70 leading-relaxed">
-              Saya selalu terbuka untuk berdiskusi tentang pengembangan aplikasi web, rancangan arsitektur, peluang kolaborasi penuh waktu, maupun sekadar menyapa dan minum kopi digital.
-            </p>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start text-left">
+          {/* Info Side (Col 5) */}
+          <div className="lg:col-span-5 flex flex-col gap-6">
+            <div className="neo-box p-6 rounded-2xl bg-card">
+              <h3 className="text-xl sm:text-2xl font-black text-foreground mb-3 leading-snug">
+                Punya penawaran proyek atau ingin berdiskusi?
+              </h3>
+              <p className="text-sm text-foreground/80 leading-relaxed font-medium">
+                Saya selalu terbuka untuk mendiskusikan peluang kerja penuh waktu (*Full-time*), kontrak, arsitektur sistem web skala B2B/B2C, integrasi AI workflow, maupun sekadar bertukar sapa.
+              </p>
+            </div>
 
-            {/* Direct Cards */}
-            <div className="flex flex-col gap-4 mt-4">
+            {/* Direct Contact Cards */}
+            <div className="flex flex-col gap-3.5">
+              {/* Email */}
               <a
                 href="mailto:hellonaufalhanif@gmail.com"
-                className="group flex items-center gap-4 p-4 rounded-xl border border-border bg-card/30 hover:bg-card hover:border-primary/30 transition-all duration-300"
+                className="neo-box p-4 rounded-xl bg-card flex items-center gap-4 hover:translate-x-[2px] hover:translate-y-[2px] transition-all group"
               >
-                <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
-                  <Mail className="h-5 w-5" />
+                <div className="p-3 rounded-lg border-2 border-black bg-neo-yellow text-black shadow-[2px_2px_0px_0px_#000]">
+                  <Mail className="h-5 w-5 stroke-[2.5]" />
                 </div>
-                <div>
-                  <h4 className="text-xs font-bold text-foreground/40 uppercase tracking-wider">Kirim Email</h4>
-                  <p className="text-sm font-semibold text-foreground mt-0.5">hellonaufalhanif@gmail.com</p>
+                <div className="flex-1 min-w-0">
+                  <span className="text-[10px] font-mono font-bold text-foreground/60 uppercase">Email Langsung</span>
+                  <p className="text-xs sm:text-sm font-black text-foreground truncate mt-0.5">
+                    hellonaufalhanif@gmail.com
+                  </p>
                 </div>
               </a>
 
-              <div className="flex items-center gap-4 p-4 rounded-xl border border-border bg-card/30">
-                <div className="p-3 rounded-lg bg-secondary/10 text-secondary">
-                  <MapPin className="h-5 w-5" />
+              {/* Phone / WA */}
+              <a
+                href="https://wa.me/6281288330203"
+                target="_blank"
+                rel="noreferrer"
+                className="neo-box p-4 rounded-xl bg-card flex items-center gap-4 hover:translate-x-[2px] hover:translate-y-[2px] transition-all group"
+              >
+                <div className="p-3 rounded-lg border-2 border-black bg-neo-green text-black shadow-[2px_2px_0px_0px_#000]">
+                  <Phone className="h-5 w-5 stroke-[2.5]" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <span className="text-[10px] font-mono font-bold text-foreground/60 uppercase">WhatsApp / Telepon</span>
+                  <p className="text-xs sm:text-sm font-black text-foreground truncate mt-0.5">
+                    +62 812-8833-0203
+                  </p>
+                </div>
+              </a>
+
+              {/* Location */}
+              <div className="neo-box p-4 rounded-xl bg-card flex items-center gap-4">
+                <div className="p-3 rounded-lg border-2 border-black bg-neo-blue text-black shadow-[2px_2px_0px_0px_#000]">
+                  <MapPin className="h-5 w-5 stroke-[2.5]" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-foreground/40 uppercase tracking-wider">Lokasi</h4>
-                  <p className="text-sm font-semibold text-foreground mt-0.5">Tangerang Selatan, Banten</p>
+                  <span className="text-[10px] font-mono font-bold text-foreground/60 uppercase">Domisili</span>
+                  <p className="text-xs sm:text-sm font-black text-foreground mt-0.5">
+                    Tangerang Selatan, Banten
+                  </p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Form Side (Col 3) */}
-          <div className="lg:col-span-3 border border-border bg-card/40 rounded-2xl p-6 md:p-8 backdrop-blur-md relative overflow-hidden">
+          {/* Form Side (Col 7) */}
+          <div className="lg:col-span-7 neo-box-lg rounded-2xl p-6 sm:p-8 bg-card relative">
             {status === "success" ? (
-              /* Success Panel */
               <div className="py-12 flex flex-col items-center justify-center text-center gap-4 animate-fade-in-up">
-                <div className="p-4 rounded-full bg-emerald-500/10 text-emerald-500 animate-bounce">
-                  <CheckCircle2 className="h-10 w-10" />
+                <div className="neo-box p-4 rounded-full bg-neo-green text-black animate-bounce">
+                  <CheckCircle2 className="h-10 w-10 stroke-[3]" />
                 </div>
-                <h3 className="text-xl font-bold text-foreground">Pesan Berhasil Terkirim!</h3>
-                <p className="max-w-xs text-sm text-foreground/60 leading-relaxed">
-                  Terima kasih sudah menghubungi. Saya akan membaca pesan Anda dan membalasnya sesegera mungkin.
+                <h3 className="text-2xl font-black text-foreground">Pesan Berhasil Terkirim!</h3>
+                <p className="max-w-sm text-sm text-foreground/80 font-medium leading-relaxed">
+                  Terima kasih sudah menghubungi saya. Saya akan segera meninjau pesan Anda dan membalasnya secepat mungkin.
                 </p>
                 <button
                   onClick={() => setStatus("idle")}
-                  className="mt-4 px-5 py-2.5 rounded-xl border border-border bg-card text-xs font-semibold hover:border-foreground/20 transition-colors"
+                  className="neo-btn bg-neo-yellow text-black px-6 py-2.5 rounded-xl text-xs font-black mt-4"
                 >
-                  Kirim Pesan Baru
+                  Kirim Pesan Lainnya
                 </button>
               </div>
             ) : (
-              /* Form Box */
-              <form onSubmit={handleSubmit} className="flex flex-col gap-6 text-left">
-                {/* Error Banner */}
+              <form onSubmit={handleSubmit} className="flex flex-col gap-5 text-left">
                 {status === "error" && (
-                  <div className="flex items-center gap-2 p-3 rounded-lg bg-red-500/10 text-red-500 text-xs font-medium border border-red-500/20">
-                    <AlertCircle className="h-4 w-4" />
+                  <div className="neo-box p-3 rounded-xl bg-neo-red text-black text-xs font-black inline-flex items-center gap-2">
+                    <AlertCircle className="h-4 w-4 stroke-[3]" />
                     <span>{errorMsg}</span>
                   </div>
                 )}
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Name field */}
                   <div className="flex flex-col gap-1.5">
-                    <label htmlFor="name" className="text-xs font-bold text-foreground/75 tracking-wide">
-                      Nama Lengkap
+                    <label htmlFor="name" className="text-xs font-black text-foreground font-mono">
+                      NAMA LENGKAP *
                     </label>
                     <input
                       type="text"
@@ -145,14 +162,14 @@ export default function Contact() {
                       onChange={handleChange}
                       placeholder="Masukkan nama Anda"
                       disabled={status === "loading"}
-                      className="px-4 py-3 rounded-xl border border-border bg-card/50 text-foreground text-sm placeholder:text-foreground/30 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all duration-300 disabled:opacity-50"
+                      className="neo-input p-3 rounded-xl bg-background text-foreground text-sm placeholder:text-foreground/40 font-medium"
                     />
                   </div>
 
                   {/* Email field */}
                   <div className="flex flex-col gap-1.5">
-                    <label htmlFor="email" className="text-xs font-bold text-foreground/75 tracking-wide">
-                      Alamat Email
+                    <label htmlFor="email" className="text-xs font-black text-foreground font-mono">
+                      ALAMAT EMAIL *
                     </label>
                     <input
                       type="email"
@@ -162,15 +179,15 @@ export default function Contact() {
                       onChange={handleChange}
                       placeholder="nama@email.com"
                       disabled={status === "loading"}
-                      className="px-4 py-3 rounded-xl border border-border bg-card/50 text-foreground text-sm placeholder:text-foreground/30 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all duration-300 disabled:opacity-50"
+                      className="neo-input p-3 rounded-xl bg-background text-foreground text-sm placeholder:text-foreground/40 font-medium"
                     />
                   </div>
                 </div>
 
                 {/* Message field */}
                 <div className="flex flex-col gap-1.5">
-                  <label htmlFor="message" className="text-xs font-bold text-foreground/75 tracking-wide">
-                    Pesan Anda
+                  <label htmlFor="message" className="text-xs font-black text-foreground font-mono">
+                    DETAIL PESAN / PENAWARAN *
                   </label>
                   <textarea
                     id="message"
@@ -178,9 +195,9 @@ export default function Contact() {
                     rows={4}
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Tuliskan detail penawaran proyek atau pertanyaan Anda di sini..."
+                    placeholder="Ceritakan detail penawaran proyek atau pertanyaan Anda..."
                     disabled={status === "loading"}
-                    className="px-4 py-3 rounded-xl border border-border bg-card/50 text-foreground text-sm placeholder:text-foreground/30 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all duration-300 resize-none disabled:opacity-50"
+                    className="neo-input p-3 rounded-xl bg-background text-foreground text-sm placeholder:text-foreground/40 font-medium resize-none"
                   />
                 </div>
 
@@ -188,17 +205,17 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="group flex h-12 items-center justify-center gap-2 rounded-xl bg-primary text-white font-medium px-6 hover:bg-primary/95 transition-all duration-300 shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/25 disabled:opacity-75 disabled:cursor-not-allowed select-none btn-glow"
+                  className="neo-btn bg-neo-yellow text-black h-12 rounded-xl text-sm font-black inline-flex items-center justify-center gap-2 mt-2 select-none"
                 >
                   {status === "loading" ? (
                     <>
-                      <div className="h-4 w-4 rounded-full border-2 border-white/35 border-t-white animate-spin" />
+                      <div className="h-4 w-4 rounded-full border-2 border-black border-t-transparent animate-spin" />
                       <span>Mengirim Pesan...</span>
                     </>
                   ) : (
                     <>
-                      <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                      <span>Kirim Pesan</span>
+                      <Send className="h-4 w-4 stroke-[2.5]" />
+                      <span>Kirim Pesan Sekarang</span>
                     </>
                   )}
                 </button>
@@ -210,3 +227,4 @@ export default function Contact() {
     </section>
   );
 }
+

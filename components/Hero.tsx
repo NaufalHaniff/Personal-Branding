@@ -69,10 +69,9 @@ export default function Hero() {
           </span>
         </h1>
 
-        {/* Sub-description based on Resume */}
+        {/* Professional Engineering Value Statement */}
         <p className="max-w-2xl text-base sm:text-lg text-foreground/80 leading-relaxed font-medium">
-          {t.hero.bioGreeting} <strong className="text-foreground font-black underline decoration-neo-yellow decoration-4 underline-offset-2">{t.hero.bioName}</strong>.{" "}
-          {t.hero.bioBody.replace("Halo, saya Naufal Hanif Fauzi. ", "").replace("Hello, I am Naufal Hanif Fauzi. ", "")}
+          {t.hero.bioBody}
         </p>
 
         {/* Action Buttons */}
@@ -96,17 +95,14 @@ export default function Hero() {
 
         {/* Floating Quirky Tech Badges */}
         <div className="flex flex-wrap justify-center items-center gap-3 mt-6 select-none">
-          <div className="neo-badge bg-card text-foreground px-3 py-1.5 rounded-lg text-xs font-mono -rotate-2">
+          <div className="neo-badge bg-card text-foreground px-3.5 py-1.5 rounded-lg text-xs font-mono -rotate-2">
             {t.hero.badge1}
           </div>
-          <div className="neo-badge bg-neo-yellow text-black px-3 py-1.5 rounded-lg text-xs font-mono rotate-1">
+          <div className="neo-badge bg-neo-green text-black px-3.5 py-1.5 rounded-lg text-xs font-mono rotate-1">
             {t.hero.badge2}
           </div>
-          <div className="neo-badge bg-neo-green text-black px-3 py-1.5 rounded-lg text-xs font-mono -rotate-1">
+          <div className="neo-badge bg-neo-red text-black px-3.5 py-1.5 rounded-lg text-xs font-mono -rotate-1">
             {t.hero.badge3}
-          </div>
-          <div className="neo-badge bg-neo-red text-black px-3 py-1.5 rounded-lg text-xs font-mono rotate-2">
-            {t.hero.badge4}
           </div>
         </div>
       </div>

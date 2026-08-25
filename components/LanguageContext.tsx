@@ -38,7 +38,6 @@ export interface Translations {
     badge1: string;
     badge2: string;
     badge3: string;
-    badge4: string;
   };
   about: {
     tag: string;
@@ -163,19 +162,18 @@ export const dictionaries: Record<Language, Translations> = {
       contact: "Kontak",
     },
     hero: {
-      statusBadge: "Tersedia untuk Peluang & Proyek Baru",
-      titlePrefix: "Membangun Solusi Web Yang",
-      words: ["Skalabel", "Performa Tinggi", "B2B & B2C", "User-Friendly", "Modern"],
-      bioGreeting: "Halo, saya",
+      statusBadge: "Tersedia untuk Posisi Full-Time & Proyek Baru",
+      titlePrefix: "Rekayasa Platform Web",
+      words: ["B2B & B2C Skala Besar", "Performa Tinggi & Andal", "Arsitektur Skalabel", "Sistem Enterprise", "Akselerasi AI Modern"],
+      bioGreeting: "",
       bioName: "Naufal Hanif Fauzi",
       bioBody:
-        "Fresh graduate S1 Teknik Informatika (Universitas Pamulang) & Full-Stack Web Developer dengan 4 tahun latar belakang web development. Berpengalaman membangun platform multi-seller B2B & B2C skala besar menggunakan Laravel, MySQL, Tailwind CSS, serta memanfaatkan modern AI Tooling.",
+        "Full-Stack Web Developer dengan spesialisasi pengembangan platform web berskala besar, sistem e-commerce B2B/B2C multi-seller, dan arsitektur database performa tinggi. Menggabungkan ekosistem modern Laravel, MySQL, Next.js, dan akselerasi modern AI tooling untuk menghasilkan solusi digital yang andal dan efisien.",
       viewProjects: "Lihat Portofolio Proyek",
       contactMe: "Hubungi Saya",
       badge1: "⚡ Laravel & Next.js",
       badge2: "🤖 AI-Assisted (Copilot, Claude, Antigravity)",
-      badge3: "🎓 S1 Teknik Informatika",
-      badge4: "📍 Tangerang Selatan",
+      badge3: "📍 Tangerang Selatan",
     },
     about: {
       tag: "01 / TENTANG DIRI SAYA",
@@ -372,19 +370,18 @@ export const dictionaries: Record<Language, Translations> = {
       contact: "Contact",
     },
     hero: {
-      statusBadge: "Available for Opportunities & New Projects",
-      titlePrefix: "Building Web Solutions That Are",
-      words: ["Scalable", "High-Performance", "B2B & B2C", "User-Friendly", "Modern"],
-      bioGreeting: "Hello, I am",
+      statusBadge: "Available for Full-Time Roles & Projects",
+      titlePrefix: "Architecting Web Platforms",
+      words: ["Large-Scale B2B & B2C", "High-Performance Systems", "Scalable Architecture", "Enterprise Solutions", "Modern AI Workflows"],
+      bioGreeting: "",
       bioName: "Naufal Hanif Fauzi",
       bioBody:
-        "Fresh graduate in Informatics Engineering (Universitas Pamulang) & Full-Stack Web Developer with 4 years of web development background. Experienced in building large-scale multi-seller B2B & B2C platforms using Laravel, MySQL, Tailwind CSS, while actively leveraging modern AI Tooling.",
+        "Full-Stack Web Developer specializing in large-scale web platforms, multi-seller B2B/B2C systems, and high-performance database architectures. Combining Laravel, MySQL, Next.js, and AI-accelerated developer workflows to deliver robust, scalable, and high-impact digital solutions.",
       viewProjects: "View Portfolio Projects",
       contactMe: "Contact Me",
       badge1: "⚡ Laravel & Next.js",
       badge2: "🤖 AI-Assisted (Copilot, Claude, Antigravity)",
-      badge3: "🎓 Bachelor of Informatics",
-      badge4: "📍 South Tangerang, Indonesia",
+      badge3: "📍 South Tangerang, Indonesia",
     },
     about: {
       tag: "01 / ABOUT ME",

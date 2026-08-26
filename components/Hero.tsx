@@ -101,9 +101,15 @@ export default function Hero() {
           <div className="neo-badge bg-neo-green text-black px-3.5 py-1.5 rounded-lg text-xs font-mono rotate-1">
             {t.hero.badge2}
           </div>
-          <div className="neo-badge bg-neo-red text-black px-3.5 py-1.5 rounded-lg text-xs font-mono -rotate-1">
+          <a
+            href="https://maps.google.com/?q=Tangerang+Selatan,+Banten,+Indonesia"
+            target="_blank"
+            rel="noreferrer"
+            className="neo-badge bg-neo-red text-black px-3.5 py-1.5 rounded-lg text-xs font-mono -rotate-1 hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#000] transition-all cursor-pointer"
+            title="Buka Google Maps"
+          >
             {t.hero.badge3}
-          </div>
+          </a>
         </div>
       </div>
     </section>

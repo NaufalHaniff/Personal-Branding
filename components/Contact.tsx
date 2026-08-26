@@ -104,7 +104,12 @@ export default function Contact() {
           </a>
 
           {/* Location Card */}
-          <div className="neo-box p-6 rounded-2xl bg-card flex flex-col justify-between">
+          <a
+            href="https://maps.google.com/?q=Tangerang+Selatan,+Banten,+Indonesia"
+            target="_blank"
+            rel="noreferrer"
+            className="neo-box p-6 rounded-2xl bg-card flex flex-col justify-between hover:translate-x-[2px] hover:translate-y-[2px] transition-all group cursor-pointer"
+          >
             <div>
               <div className="p-3 rounded-xl border-2 border-black bg-neo-blue text-black shadow-[2px_2px_0px_0px_#000] w-fit mb-4">
                 <MapPin className="h-6 w-6 stroke-[2.5]" />
@@ -116,10 +121,11 @@ export default function Contact() {
                 {t.contact.locationVal}
               </p>
             </div>
-            <div className="mt-6 pt-4 border-t-2 border-black/10 flex items-center justify-between text-[11px] font-mono font-bold text-foreground/60">
+            <div className="mt-6 pt-4 border-t-2 border-black/10 flex items-center justify-between text-xs font-bold text-foreground/80 group-hover:text-black dark:group-hover:text-white">
               <span>{t.contact.openWorkType}</span>
+              <ArrowUpRight className="h-4 w-4 stroke-[2.5] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </section>

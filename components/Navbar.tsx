@@ -7,7 +7,7 @@ import { Sun, Moon, Menu, X, Globe } from "lucide-react";
 
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
-  const { language, toggleLanguage, t } = useLanguage();
+  const { language, setLanguage, toggleLanguage, t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -133,15 +133,6 @@ export default function Navbar() {
         {/* Mobile Action Buttons */}
         <div className="flex items-center gap-2 md:hidden">
           <button
-            onClick={toggleLanguage}
-            className="neo-btn-sm px-2 py-1.5 rounded-lg bg-neo-yellow text-black flex items-center gap-1 text-xs font-black"
-            aria-label="Switch Language"
-          >
-            <Globe className="h-3.5 w-3.5 stroke-[2.5]" />
-            <span>{language.toUpperCase()}</span>
-          </button>
-
-          <button
             onClick={toggleTheme}
             className="neo-btn-sm p-2 rounded-lg bg-neo-green text-black flex items-center justify-center"
             aria-label="Toggle Theme"
@@ -163,6 +154,40 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden mt-2 max-w-6xl mx-auto p-4 rounded-xl border-2 border-black bg-card shadow-[5px_5px_0px_0px_#000000] animate-fade-in-up">
           <ul className="flex flex-col gap-2">
+            {/* Language Selector (Above Home) */}
+            <li>
+              <div className="flex items-center justify-between px-3.5 py-2 rounded-lg border-2 border-black bg-neo-yellow/20 dark:bg-zinc-800/80 mb-1">
+                <span className="flex items-center gap-2 text-xs font-black text-foreground">
+                  <Globe className="h-4 w-4 stroke-[2.5]" />
+                  <span>{language === "id" ? "Bahasa" : "Language"}</span>
+                </span>
+                <div className="flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() => setLanguage("id")}
+                    className={`px-3 py-1 rounded-md text-xs font-black border-2 border-black transition-all ${
+                      language === "id"
+                        ? "bg-neo-yellow text-black shadow-[2px_2px_0px_0px_#000000] -translate-y-0.5"
+                        : "bg-card text-foreground hover:bg-black/5 dark:hover:bg-white/10"
+                    }`}
+                  >
+                    ID
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setLanguage("en")}
+                    className={`px-3 py-1 rounded-md text-xs font-black border-2 border-black transition-all ${
+                      language === "en"
+                        ? "bg-neo-yellow text-black shadow-[2px_2px_0px_0px_#000000] -translate-y-0.5"
+                        : "bg-card text-foreground hover:bg-black/5 dark:hover:bg-white/10"
+                    }`}
+                  >
+                    EN
+                  </button>
+                </div>
+              </div>
+            </li>
+
             {navItems.map((item) => {
               const isActive = activeSection === item.href.slice(1);
               return (

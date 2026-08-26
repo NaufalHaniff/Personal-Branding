@@ -155,7 +155,7 @@ export interface Translations {
 export const dictionaries: Record<Language, Translations> = {
   id: {
     nav: {
-      home: "Home",
+      home: "Beranda",
       about: "Tentang",
       skills: "Keahlian",
       projects: "Proyek",

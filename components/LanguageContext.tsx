@@ -127,6 +127,9 @@ export interface Translations {
     locationLabel: string;
     locationVal: string;
     chatWaBtn: string;
+    floatingWaPopupTitle: string;
+    floatingWaPopupSubtitle: string;
+    floatingWaTemplate: string;
     sendDirectEmailBtn: string;
     sendEmailAction: string;
     openWaAction: string;
@@ -335,6 +338,9 @@ export const dictionaries: Record<Language, Translations> = {
       locationLabel: "Domisili",
       locationVal: "Tangerang Selatan, Banten",
       chatWaBtn: "Chat via WhatsApp",
+      floatingWaPopupTitle: "Naufal Hanif Fauzi",
+      floatingWaPopupSubtitle: "Tersedia untuk Diskusi Proyek 👋",
+      floatingWaTemplate: "Halo Naufal Hanif Fauzi, saya melihat portofolio Anda dan tertarik untuk mendiskusikan proyek / peluang kerja sama.",
       sendDirectEmailBtn: "Kirim Email Langsung",
       sendEmailAction: "Kirim Pesan Email",
       openWaAction: "Buka WhatsApp",
@@ -543,6 +549,9 @@ export const dictionaries: Record<Language, Translations> = {
       locationLabel: "Location",
       locationVal: "South Tangerang, Banten, Indonesia",
       chatWaBtn: "Chat via WhatsApp",
+      floatingWaPopupTitle: "Naufal Hanif Fauzi",
+      floatingWaPopupSubtitle: "Available for Project Chat 👋",
+      floatingWaTemplate: "Hello Naufal Hanif Fauzi, I saw your portfolio website and would like to discuss a project / collaboration opportunity.",
       sendDirectEmailBtn: "Send Direct Email",
       sendEmailAction: "Send Email Message",
       openWaAction: "Open WhatsApp",

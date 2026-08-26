@@ -59,24 +59,58 @@ export default function Footer() {
     });
   };
 
+  const renderSocialAndUpButtons = (btnPadding = "p-2 sm:p-2.5") => (
+    <div className="flex items-center gap-2">
+      {socialLinks.map((link) => (
+        <a
+          key={link.name}
+          href={link.href}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={link.name}
+          className={`neo-btn-sm ${link.color} text-black ${btnPadding} rounded-lg flex items-center justify-center`}
+        >
+          {link.icon}
+        </a>
+      ))}
+      <button
+        onClick={handleScrollToTop}
+        aria-label={t.footer.backToTop}
+        className={`neo-btn-sm bg-neo-yellow text-black ${btnPadding} rounded-lg flex items-center justify-center`}
+        title={t.footer.backToTop}
+      >
+        <ArrowUp className="h-4 w-4 stroke-[3]" />
+      </button>
+    </div>
+  );
+
   return (
     <footer className="border-t-2 border-black bg-card py-10 px-4 sm:px-6 relative select-none">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-        {/* Left Side: Copyright */}
-        <div className="flex flex-col gap-1 text-center md:text-left">
-          <div className="inline-flex items-center justify-center md:justify-start gap-2">
-            <span className="neo-badge bg-neo-yellow text-black px-2.5 py-0.5 rounded text-xs font-black">
-              Naufal Hanif Fauzi
-            </span>
-            <p className="text-xs sm:text-sm font-black text-foreground">
-              &copy; {currentYear} Naufal Hanif Fauzi. {t.footer.allRightsReserved}
-            </p>
+        {/* Mobile: Row 1 with Badge on left and Socials+Up on right | Desktop: Left side with Badge and Copyright */}
+        <div className="w-full md:w-auto flex items-center justify-between md:justify-start gap-4">
+          <span className="neo-badge bg-neo-yellow text-black px-2.5 py-0.5 rounded text-xs font-black shrink-0">
+            Naufal Hanif Fauzi
+          </span>
+
+          {/* Mobile only: Social & Up Buttons (swapped to top row next to badge) */}
+          <div className="flex md:hidden">
+            {renderSocialAndUpButtons("p-2")}
           </div>
+
+          {/* Desktop only: Copyright text */}
+          <p className="hidden md:block text-xs sm:text-sm font-black text-foreground">
+            &copy; {currentYear} Naufal Hanif Fauzi. {t.footer.allRightsReserved}
+          </p>
         </div>
 
-        {/* Middle/Right: Back to Top and Socials */}
-        <div className="flex items-center gap-4">
-          {/* Social Icons */}
+        {/* Mobile only: Copyright text on bottom row */}
+        <p className="block md:hidden text-xs font-black text-foreground text-center">
+          &copy; {currentYear} Naufal Hanif Fauzi. {t.footer.allRightsReserved}
+        </p>
+
+        {/* Desktop only: Right side Socials & Back to Top */}
+        <div className="hidden md:flex items-center gap-4">
           <div className="flex items-center gap-2">
             {socialLinks.map((link) => (
               <a
@@ -92,9 +126,8 @@ export default function Footer() {
             ))}
           </div>
 
-          <div className="h-6 w-[2px] bg-black dark:bg-zinc-700 hidden md:block" />
+          <div className="h-6 w-[2px] bg-black dark:bg-zinc-700" />
 
-          {/* Back to top button */}
           <button
             onClick={handleScrollToTop}
             aria-label={t.footer.backToTop}

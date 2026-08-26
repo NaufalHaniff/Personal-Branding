@@ -161,30 +161,15 @@ export default function Navbar() {
                   <Globe className="h-4 w-4 stroke-[2.5]" />
                   <span>{language === "id" ? "Bahasa" : "Language"}</span>
                 </span>
-                <div className="flex items-center gap-1.5">
-                  <button
-                    type="button"
-                    onClick={() => setLanguage("id")}
-                    className={`px-3 py-1 rounded-md text-xs font-black border-2 border-black transition-all ${
-                      language === "id"
-                        ? "bg-neo-yellow text-black shadow-[2px_2px_0px_0px_#000000] -translate-y-0.5"
-                        : "bg-card text-foreground hover:bg-black/5 dark:hover:bg-white/10"
-                    }`}
-                  >
-                    ID
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setLanguage("en")}
-                    className={`px-3 py-1 rounded-md text-xs font-black border-2 border-black transition-all ${
-                      language === "en"
-                        ? "bg-neo-yellow text-black shadow-[2px_2px_0px_0px_#000000] -translate-y-0.5"
-                        : "bg-card text-foreground hover:bg-black/5 dark:hover:bg-white/10"
-                    }`}
-                  >
-                    EN
-                  </button>
-                </div>
+                <button
+                  type="button"
+                  onClick={toggleLanguage}
+                  className="neo-btn-sm px-3.5 py-1 rounded-md text-xs font-black border-2 border-black bg-neo-yellow text-black shadow-[2px_2px_0px_0px_#000000] hover:translate-x-[1px] hover:translate-y-[1px] transition-all"
+                  aria-label="Switch Language"
+                  title="Ganti Bahasa (ID / EN)"
+                >
+                  {language.toUpperCase()}
+                </button>
               </div>
             </li>
 

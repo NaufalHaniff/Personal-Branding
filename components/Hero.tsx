@@ -48,8 +48,7 @@ export default function Hero() {
       {/* Main Container */}
       <div className="max-w-4xl mx-auto text-center z-10 flex flex-col items-center gap-6">
         {/* Status Pill Badge */}
-        <div className="neo-badge bg-neo-green text-black px-4 py-1.5 rounded-full inline-flex items-center gap-2 animate-bounce">
-          <span className="w-2.5 h-2.5 rounded-full bg-black animate-ping" />
+        <div className="neo-badge bg-neo-green text-black px-4 py-1.5 rounded-full inline-flex items-center animate-bounce">
           <span>{t.hero.statusBadge}</span>
         </div>
 
